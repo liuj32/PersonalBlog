@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script src="./node.js"></script>
+  <script>
+var mergeKLists = function(lists) {
+    if(lists.length < 2){
+        return lists[0] || []
+    }
+    for (var i=0,ilen = lists.length; i<ilen -1; i++) {
+       lists[i+1] = mergeKList(lists[i], lists[i+1])
+    }
+    return lists[lists.length - 1];
+};
+
+ function mergeKList(l1, l2){
+   var  dummy = new ListNode(0);
+   var prev = dummy
+   while(l1 && l2){
+       if(l1.val <l2.val){
+           prev.next = l1;
+           l1 = l1.next;
+       } else {
+           prev.next = l2;
+           l2 = l2.next;
+       }
+       prev = prev.next;
+   }
+   if(l1){
+       prev.next = l1;
+   }
+   if(l2){
+       prev.next = l2;
+   }
+   return dummy.next;
+ }
+
+   console.log(mergeKLists([  ]))
+  </script>
+</body>
+</html>

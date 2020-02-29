@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script src="./node.js"></script>
+  <script>
+function biarySearch(nums, target, left){
+    var lo = 0;
+    var hi = nums.length;
+    while(lo < hi){
+      var mid = Math.floor((lo + hi) /2)
+      if(nums[mid] > target || left && nums[mid] == target) {
+        hi = mid;
+      } else {
+          lo = mid + 1;
+      }
+    }
+    return lo;
+}
+
+
+console.log(arr[-1])
+console.log(  biarySearch([5,7,7,8,8,10], 0, 5, 8)   )
+  </script>
+</body>
+</html>

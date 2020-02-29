@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <h1>asasdf{{name}}</h1>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        let opt = {
+            el: "#root",
+            data:{
+                age: 20,
+                name: 'liujie'
+            }
+        }
+        new Vue(opt)
+        setTimeout(function () {
+            opt.data.name = "刘杰"
+          },2000)
+    </script>
+    <script>
+    if(/\{\{\s*(.*?)\s*\}\}/.test("aFSAFSADF{{liujie}}")){
+      console.log(RegExp.$1)
+    }else{
+        console.log(222222)
+    }
+    </script>
+</body>
+</html>

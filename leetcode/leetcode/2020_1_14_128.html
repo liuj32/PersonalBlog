@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script src="./tree.js"></script>
+  <script>
+
+
+var longestConsecutive = function(nums) {
+   var longest = 0;
+   var numsMap = new Map()
+   for(let i=0, ilen = nums.length;i<ilen;i++){
+      numsMap.set(nums[i], i)
+   }
+   for(var i=0, ilen = nums.length;i<ilen;i++){
+       var cur = nums[i]
+       var curLong = 1
+       while(numsMap.get(cur+1) != undefined){
+           curLong += 1;
+           cur += 1;
+       }
+       longest = Math.max(curLong, longest)
+   }
+   return longest
+};
+
+function arrayContain(arr, target){
+    for(var i=0,ilen=arr.length;i<ilen;i++){
+        if(arr[i] == target)
+          return true
+    }
+    return false
+}
+
+
+
+    console.log(longestConsecutive([100, 2, 1, 4,3, 89])  )
+  </script>
+</body>
+</html>

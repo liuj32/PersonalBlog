@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script src="./node.js"></script>
+  <script>
+var trap = function(height) {
+    var ans = 0;
+    
+    var len = height.length
+    var max_left = [], max_right = []
+    max_left[0] = height[0];
+    for(var j=1;j<len;j++){
+        max_left[j] = Math.max(height[j], max_left[j-1])
+    }
+    max_right[len -1] = height[len-1]
+    for(var k=len-2;k>=0;k--){
+        max_right[k] = Math.max(height[k], max_right[k+1])
+    }        
+        console.log(max_left)
+        console.log(max_right)
+    for(var i=1;i<len-1;i++){
+      ans += Math.min(max_left[i], max_right[i]) - height[i]
+    }
+    return ans
+};
+console.log(  trap([0,1,0,2,1,0,1,3,2,1,2,1])  )
+  </script>
+</body>
+</html>
