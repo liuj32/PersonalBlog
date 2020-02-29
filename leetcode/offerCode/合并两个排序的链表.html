@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script src="./list.js"></script>
+  <script>
+  
+
+  function Merge(pHead1, pHead2)
+{
+    // write code here
+    var prev = new ListNode()
+    var head = prev;
+    
+    while(pHead1 != null && pHead2 != null) {
+        if(pHead1.val < pHead2.val) {
+            prev.next = pHead1
+            prev = pHead1;
+            pHead1 = pHead1.next
+        } else {
+            prev.next = pHead2
+            prev = pHead2
+            pHead2 = pHead2.next
+        }
+       
+    }
+
+    if(pHead1 != null){
+        prev.next = pHead1
+    }
+    
+    if(pHead2 != null){
+        prev.next = pHead2
+    }
+    
+    return head.next;
+}
+   console.log(  Merge(head1, head2)   )
+  </script>
+</body>
+</html>

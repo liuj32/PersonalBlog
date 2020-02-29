@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  
+  function NumberOf1Between1AndN_Solution(n)
+{
+    // write code here
+    var count = 0;
+    for(var i=1;i<=n;i++){
+        var str = i.toString();
+        count += helper(str)
+    }
+    return count;
+}
+
+function helper(str) {
+    var count = 0;
+    for(var i=0;i<str.length;i++){
+        if(str[i] == '1')
+            count++;
+    }
+    return count;
+}   
+
+function NumberOf1Between1AndN_Solution2(n)
+{
+    // write code here
+    var count = 0;
+    for(var i=1;i<=n;i++){
+      var num = i;
+        while(num > 0){
+            if(num % 10 == 1){
+                count++;
+            }
+            num = Math.floor(num / 10)
+        }
+    }
+    return count;
+}
+
+    console.log( NumberOf1Between1AndN_Solution(13)  )
+  </script>
+</body>
+</html>

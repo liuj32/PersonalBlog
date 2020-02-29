@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+var letterCombinations = function(digits) {
+    var map = ['', 1, 'abc', 'def','hgi','jkl','mno','pqrs','tuv', 'wxyz']
+    var digitsArr = digits.split(""); 
+    var code = []
+    digitsArr.forEach(item => {
+        if(map[item]){
+           code.push(map[item])
+        }
+    })
+    
+    let comb = (arr) => {
+        let temp = []
+        if(arr.length == 0){
+            return [] ;
+        }
+        if(arr.length == 1){
+            return arr[0].split("") ;
+        }
+        for(let i=0,il=arr[0].length;i<il;i++){
+           for(let j=0,jl=arr[1].length;j<jl;j++){
+               temp.push(`${arr[0][i]}${arr[1][j]}`)
+           }
+        }
+        
+        arr.splice(0,2,temp);
+        console.log(arr)
+        
+        if(arr.length>1){
+        return  comb(arr)
+        }else{
+            return temp
+        }
+        
+    }
+    
+    return comb(code)
+};
+      console.log(  letterCombinations("23")        )
+    </script>
+</body>
+</html>

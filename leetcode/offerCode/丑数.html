@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+function GetUglyNumber_Solution(index)
+{
+    // write code here
+    if(index <= 0) return 0;
+    var uglyArr = [1];
+    var count = 1, newUgly = 1;
+    var two = 0, three = 0, five = 0;
+    while(count < index){
+        newUgly = Math.min(uglyArr[two]*2, uglyArr[three]*3, uglyArr[five]*5)
+        if(newUgly == uglyArr[two]*2) two++;
+        if(newUgly == uglyArr[three]*3) three++;
+        if(newUgly == uglyArr[five]*5) five++;
+        uglyArr.push(newUgly);
+        count++;
+    }
+    return newUgly
+}
+
+    console.log( GetUglyNumber_Solution(6)  )
+  </script>
+</body>
+</html>

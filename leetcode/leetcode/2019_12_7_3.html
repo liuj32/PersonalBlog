@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      /*
+      * 复杂。。。
+      */
+var lengthOfLongestSubstring = function(s) {
+  var len =  0
+  var childStr = "";
+  for(var i=0,ilen = s.length;i<ilen;i++){
+      for(var j=i;j<ilen;j++){
+          if(childStr.indexOf(s[j]) == -1){
+              childStr += s[j]
+          }else {
+              break;
+          }
+      }
+      if(len< childStr.length){
+          len = childStr.length
+      }
+      childStr = ""
+  }
+  return len
+};
+        console.log( lengthOfLongestSubstring("jbpnbwwd")  )
+
+    /**
+    set结构
+    abcdb efgh
+    abc 
+     */
+
+    function lengthOfLongestSubstring1(s){
+      var i = 0, j =0;
+      var oSet = new Set();
+      var ans = 0;
+       while(i<n && j < n){
+        if(!oSet.has(s.charAt(j))){
+          oSet.add(charAt(j++))
+          ans = Math.max(ans, j-i)
+        }else{
+          oSet.delete(set.charAt(i++))  
+        }
+       }
+     }
+     /**
+     * map结构
+     */
+
+     function lengthOfLongestSubstring1(s){
+      var i, j, n = s.length;
+      var oMap = new Map();
+      var ans = 0;
+       for(i=0,j=0;j<n;j++){
+        if(oMap.has(s.charAt(j))){
+          i = Math.max(oMap.get(s.charAt(j)), i)
+        }
+
+        ans = Math.max(ans, j - i +1)
+        oMap.set(s.charAt(j), j+1)
+       }
+       return ans;
+     }
+
+    </script>
+</body>
+</html>

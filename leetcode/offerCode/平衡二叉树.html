@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+function TreeNode(x) {
+    this.val = x;
+    this.left = null;
+    this.right = null;
+} 
+function IsBalanced_Solution(pRoot)
+{
+    // write code here
+    if(pRoot == null) return true;
+    var difference = Math.abs(deepRoot(pRoot.left) - deepRoot(pRoot.right))
+    if(difference > 1){
+        return false;
+    }
+    if(!IsBalanced_Solution(pRoot.left)) return false;
+    if(!IsBalanced_Solution(pRoot.right)) return false;
+    return true;
+}
+    
+    function deepRoot(root){
+        if(root == null) return 0;
+        var left = 1+ deepRoot(root.left)
+        var right = 1+ deepRoot(root.right)
+        return Math.max(left, right)
+    }
+
+var root = new TreeNode(1)
+left = new TreeNode(2)
+left.left = new TreeNode(3)
+root.left = left
+console.log(root)
+    console.log( IsBalanced_Solution(root)  )
+  </script>
+</body>
+</html>

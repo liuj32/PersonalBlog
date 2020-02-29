@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+function FirstNotRepeatingChar(str)
+{
+    // write code here
+    var len = str.length;
+    if(len == 0) return -1;
+    var mapStr = {},indexMap = {}
+    for(var i=0;i<len;i++){
+        indexMap[str[i]] = i;
+        if(mapStr[str[i]] == null){
+            mapStr[str[i]] = 1;
+        }else {
+            mapStr[str[i]]++;
+        }
+    }
+    for(var k in mapStr){
+        if(mapStr[k] == 1){
+            return indexMap[k];
+        }
+    }
+    return null;
+}
+   
+
+
+    console.log( FirstNotRepeatingChar('google')  )
+  </script>
+</body>
+</html>

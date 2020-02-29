@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+var generateParenthesis1 = function(n) {
+    var rs = []
+   backtrack(rs, '', 0, 0, n)
+   return rs;
+};
+
+function backtrack(rs, cur, open, close, max){
+    console.log(cur, open, close)
+    if(cur.length == max * 2){
+      rs.push(cur)
+      return;
+    }
+      
+
+    if(open< max){
+        backtrack(rs, cur+'(', open+1, close, max)
+    }
+    if(close < open){
+        backtrack(rs, cur+')', open, close+1, max)
+    }
+}
+
+
+
+
+ function generateParenthesis(n){
+    var ans = []
+    if (n == 0) {
+            ans.push('')
+        } else {
+            for (var c = 0; c < n; c++)
+                for (left of generateParenthesis(c))
+                    for (right of generateParenthesis(n-1-c))
+                        ans.push("(" + left + ")" + right);
+        }
+        return ans;    
+ }
+ 
+      console.log(  generateParenthesis(3)      )
+    </script>
+</body>
+</html>

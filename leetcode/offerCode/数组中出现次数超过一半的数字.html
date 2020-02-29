@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+function MoreThanHalfNum_Solution(numbers)
+{
+    // write code here
+    var mapNum = {}
+    var len = numbers.length;
+    for(var i=0;i<len;i++) {
+        if(mapNum[numbers[i]] == null){
+            mapNum[numbers[i]] = 1;
+        } else {
+            mapNum[numbers[i]]++;
+        }
+    }
+    for(var k in mapNum) {
+        if(mapNum[k] > len /2){
+            return k;
+        }
+    }
+    return 0;
+}
+    console.log( MoreThanHalfNum_Solution([1,2,3,2,2,2,5,4,2])  )
+  </script>
+</body>
+</html>

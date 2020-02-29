@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+var longestPalindrome = function(s) {
+    var start = 0, end = 0;
+    for(var i=0, ilen = s.length;i < ilen; i++){
+        var len1 = search(s, i, i)
+        var len2 = search(s, i, i+1)
+        var len =  Math.max(len1, len2)
+        if(len > end - start){
+            start = i - Math.floor((len - 1)/2)
+            end = i + Math.floor(len / 2)
+        }
+    }
+    return s.slice(start, end+1)
+    
+   function search(s, l, r){
+       let left = l, right = r;
+        while(left >= 0 && right < s.length && s[left] === s[right]){
+           left--;
+           right++;
+       }
+       return right - left - 1;
+   }
+};
+
+
+      console.log( longestPalindrome("ac")  )
+    </script>
+</body>
+</html>
