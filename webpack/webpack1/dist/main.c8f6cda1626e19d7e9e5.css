@@ -1,0 +1,17 @@
+body{
+  background-color: yellow;
+}
+body {
+  background-color: yellow;
+}
+
+body {
+  background: url(img/mak-RAX9xAtQZxI-unsplash.4abbce54.jpg);
+}
+body div {
+  height: 100px;
+  width: 100px;
+  -webkit-transform: scaleX(1.5);
+          transform: scaleX(1.5);
+}
+
