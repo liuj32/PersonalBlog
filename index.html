@@ -7,43 +7,7 @@
 </head>
 <body>
   <script>
-var evalRPN = function(tokens) {    
-    var operator = '+-*/';
-    var stack = [];
-    for(var i=0;i<tokens.length;i++) {
-        if (operator.indexOf(tokens[i]) === -1) {
-            stack.push(tokens[i])
-        } else {
-            var two = stack.pop();
-            var one = stack.pop();
-            var result = null;
-            switch(tokens[i]) {
-                case '+':
-                    result = parseInt(one) + parseInt(two);
-                    break;
-                case '-':
-                    result = parseInt(one) - parseInt(two);
-                    break;
-                case '*':
-                    result = parseInt(one) * parseInt(two);
-                    break;
-                case '/':
-                    result = Math.floor(parseInt(one) / parseInt(two));
-                    break;
-                default:
-                    break;                                          
-            }
 
-            stack.push(result);
-        }
-    }
-    return stack[0];
-};
-  
-var arr = ["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"]
-var result= evalRPN(arr);
-
-console.log(result)
 
   </script>
 </body>
