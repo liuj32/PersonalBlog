@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+ function LCS(s1, s2) {
+  var m = s1.length-1, n = s2.length-1
+  return help(s1, s2, m, n)
+}
+
+function help(s1, s2, m, n) {
+  var comLen = 0
+  if (m < 0 || n < 0) {
+    return 0
+  }
+  if (s1[m] == s2[n]) {
+    comLen = 1 + help(s1, s2, m-1, n-1)
+  } else {
+    comLen = Math.max(help(s1, s2, m-1, n), help(s1, s2, m, n-1))
+  }
+
+  return comLen
+}
+
+
+var result = LCS('abc', 'acd')
+console.log(result)
+
+  </script>
+</body>
+</html>

@@ -15,7 +15,7 @@ function insert(data) {
         let parent
         while (true) {
             parent = current
-            if (data < current.show()) {z
+            if (data < current.show()) {
                 current = current.left
                 if (current == null) {
                     parent.left = node
