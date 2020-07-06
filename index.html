@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <div>
-    barnch_b
-    barnch_b
-    barnch_b
-    branch_a
-  </div>
-  <script>
+  <head>
+    <title>css阻塞</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      h1 {
+        color: red !important
+      }
+    </style>
+    <script>
+     var count = 0, num = 4
 
-  </script>
-</body>
+     while(num) {
+       if (num & 1 == 1) {
+         count++
+       }
+       num = num >> 1
+     }
+     console.log(count)
+    </script>
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.css" rel="stylesheet">
+  </head>
+  <body>
+    <h1>这是红色的</h1>
+  </body>
 </html>
