@@ -18,21 +18,5 @@ function binaryFind(arr, target, left=0, right=arr.length-1){
 }
 
 
-
-
 let arr= [2,3,4,7,7]
 console.log(binaryFind(arr,7))
-
-
-
-
-
-
-
-
-
-
-
-
-
-

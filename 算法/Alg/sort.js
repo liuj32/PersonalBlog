@@ -79,7 +79,7 @@ function insertSort(arr){
 
 
 
-function shellSort(arr,gap) { 
+function shellSort(arr,gap) {
     for(let i=0;i<gap.length;i++){
        let n = gap[i]
 
