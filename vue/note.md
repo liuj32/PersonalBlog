@@ -17,3 +17,13 @@
 7. v-show 与 v-if 区别
 
 8. 组件中 data 什么时候可以使⽤对象
+
+## Vue 常考进阶知识点
+1. 响应式原理
+   
+2. Object.defineProperty 的缺陷
+
+3. 编译过程
+
+4. NextTick 原理分析
+
