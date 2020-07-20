@@ -1,5 +1,9 @@
 # js 
 
+## es5
+1. 如何理解原型？如何理解原型链？
+
+
 ## es6
 1. 继承方式
 参考： https://juejin.im/post/5bcb2e295188255c55472db0
@@ -27,4 +31,11 @@
 参考： https://juejin.im/post/5d5b4c2df265da03dd3d73e5#heading-2
 
 ## JS 进阶知识点及常考⾯试题
-1. 
+1. call、apply、bind的实现原理
+
+2. new、instanceOf
+
+3. 为什么 0.1 + 0.2 != 0.3
+
+4. 垃圾回收机制
+

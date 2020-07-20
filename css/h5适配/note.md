@@ -8,11 +8,11 @@
 
 /* 工具函数，使用reference引用 */
 
-@fontSize: 37.5; // rem基础字号
+@fontSize: 20; // rem基础字号
 @dpr: 2; // 以2倍图的设计稿来写
 
 .px2rem(@name, @px) {
   @{name}: @px / @fontSize / @dpr * 1rem;
 }
 
-document.documentElement.style.fontSize = document.documentElement.clientWidth / 10 + 'px';
+document.documentElement.style.fontSize = 20 * document.documentElement.clientWidth / 375 + 'px';
