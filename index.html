@@ -15,15 +15,20 @@
     <div class="box">
     </div>
     <script>
-      var isSubsequence = function(s, t) {
-        for(var v of s.split('')) {
-          console.log(v)
+      var o = {
+        a: 1,
+        b: 2,
+        c: 3
+      }
+      Object.keys(o).forEach(k => {
+        if (k == 'b') {
+          console.log(k)
+          return
         }
-    
-      };
+      })
 
-      var res = isSubsequence("axc", "ahbgdc")
-      console.log(res)
+      // var res = integerBreak(10)
+      // console.log(res)
     </script>
   </body>
 </html>
