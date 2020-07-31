@@ -39,3 +39,5 @@
 
 4. 垃圾回收机制
 
+5. 为什么闭包不会被垃圾回收清除
+参考: https://github.com/raxxarr/note/issues/3

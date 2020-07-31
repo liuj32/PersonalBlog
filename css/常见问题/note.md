@@ -7,3 +7,6 @@
 css加载并不会阻碍dom的解析
 css加载会阻塞dom的渲染
 css加载会阻塞js的执行
+
+2. 动画
+transition过渡、transform变换、animation动画
