@@ -9,84 +9,9 @@
   </head>
   <body>
     <script>
-      
-      function fn(n, r, g, b) {
-         var arr = []
-         for(var i=0;i<n;i++) {
-           arr[i] = []
-           arr[i][0] = r[i]
-           arr[i][1] = g[i] 
-           arr[i][2] = b[i]
-         }
-         for(var i=n-2;i>=0;i--) {
-           for(var j=0;j<=2;j++) {
-             var min = Infinity
-             for(var k=0;k<=2;k++) {
-               if (k != j) {
-                min = Math.min(min, arr[i+1][k])
-               }
-             }
-             arr[i][j] += min
-           }
-         }
 
-         return Math.min(...arr[0])
-      }
-
-
-
-
-      function fn2(s) {
-        if (s.length == 0) {
-          return false
-        }
-        var arr = s.split('')
-        var idx = s.indexOf('8')
-        if (idx == -1) {
-          return false
-        } else {
-          arr.splice(0, idx)
-        }
-        return (arr.length >= 11)
-      }
-
-
-
-      function fn3(nums) {
-        var count = 0, zeroNum = 0
-        while(zeroNum <nums.length) {
-          if (zeroNum == nums.length-1) {
-            count++
-            break;
-          }
-          var flag = false
-          var i = 0
-          for(;i<nums.length;i++) {
-            if (nums[i] > 0) {
-              flag = true
-              nums[i] -= 1
-              if (nums[i] == 0) {
-                zeroNum++
-                continue
-              }              
-            }
-            if (flag && nums[i] == 0) {
-              flag = false
-              count++
-            }
-
-          }
-          if (flag && i == nums.length) {
-            count++
-          }
-        }
-
-        return count
-      }
-
-
-      var res1 = fn3([2,2,1,2,2])
-      console.log(res1)      
+  var res = longestIncreasingPath([[9,9,4],[6,6,8],[2,1,1]])
+  console.log(res)
     </script>
   </body>
 </html>
