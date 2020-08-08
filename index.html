@@ -1,23 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      html, body {
-        width: 100%;
-        height: 100%;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="box">
-    </div>
-    <script>
+<script>
+function TreeNode(val, left, right) {
+    this.val = (val===undefined ? 0 : val)
+    this.left = (left===undefined ? null : left)
+    this.right = (right===undefined ? null : right)
+}
 
-  var res = longestIncreasingPath([[9,9,4],[6,6,8],[2,1,1]])
-  console.log(res)
-    </script>
-  </body>
-</html>
+function createBinaryTree(arr) {
+    const create = (root, val) => {
+        if (val == null) return root
+        
+        var node = new TreeNode(val)
+        if(root == null) {
+            return node
+        }
+        
+        if (val > root.val) {
+            root.right = root.right ? create(root.right, val) : node
+        } else {
+            root.left = root.left ? create(root.left, val) : node
+        }
+        return root
+    }
+    var root
+    for(var i=0;i<arr.length;i++) {
+        root = create(root, arr[i])
+    }
+    return root
+}
+
+var recoverTree = function(root) {
+    if (root == null) return null
+
+    var error = []
+    var stack = []
+    var dfs = (root) => {
+        if (root == null) return null
+        
+        dfs(root.left)
+        stack.push(root)
+        dfs(root.right)
+    }
+
+    dfs(root)
+    for(var i=0;i<stack.length;i++) {
+        if (i-1 >= 0 && i+1 < stack.length) {
+            if (stack[i].val > stack[i-1].val && stack[i].val > stack[i+1].val) {
+                error.push(stack[i])
+            }
+        } else if (i-1 < 0) {
+            if (stack[i].val > stack[i+1].val) {
+                error.push(stack[i])
+            }
+        } else if(i + 1 == stack.length) {
+            if (stack[i].val < stack[i-1].val) {
+                error.push(stack[i])
+            }
+        }
+    }
+    console.log(error)
+    // return
+
+    var temp = error[0].val
+    error[0].val = error[1].val
+    error[1].val = temp
+    return root
+};
+
+//  var root = new TreeNode(2)
+//  root.left = new TreeNode(3)
+//  root.right = new TreeNode(1)
+    
+    // var res = recoverTree(root)
+    var root = createBinaryTree([2,1,4,null,null,3])
+    console.log(root)
+    // console.log(res)
+</script>

@@ -2,11 +2,6 @@
 > 2020/7/27
 
 
-## 动态规划
-1. 二哥：http://yudaer.github.io/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/
-
-
-
 ## 刷题顺序
 完整刷题参考: https://www.zhihu.com/collection/568399194
 面试参考：https://mp.csdn.net/console/article
@@ -32,3 +27,13 @@
 
 ### 数量
 简单的`20`道, 中等`5`道，困难`1`道。总计`570`
+
+
+
+
+## 动态规划
+1. 二哥：http://yudaer.github.io/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/
+
+## 堆
+
+## 分治

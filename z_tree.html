@@ -1,0 +1,32 @@
+<script>
+    function TreeNode(val, left, right) {
+        this.val = (val===undefined ? 0 : val)
+        this.left = (left===undefined ? null : left)
+        this.right = (right===undefined ? null : right)
+    }
+    
+    function createBinaryTree(arr) {
+        const create = (root, val) => {
+            if (val == null) return root
+            
+            var node = new TreeNode(val)
+            if(root == null) {
+                return node
+            }
+            
+            if (val > root.val) {
+                root.right = root.right ? create(root.right, val) : node
+            } else {
+                root.left = root.left ? create(root.left, val) : node
+            }
+            return root
+        }
+        var root
+        for(var i=0;i<arr.length;i++) {
+            root = create(root, arr[i])
+        }
+        return root
+    }
+    
+
+</script>
