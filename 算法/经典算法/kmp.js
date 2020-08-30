@@ -1,6 +1,5 @@
-<script>
 
-function  kmp(query, pattern) {
+        function  kmp(query, pattern) {
             var n = query.length;
             var m = pattern.length;
             var fail =  [...Array(m)].fill(-1);
@@ -31,6 +30,3 @@ function  kmp(query, pattern) {
         function repeatedSubstringPattern(s) {
             return kmp(s + s, s);
         }
-        console.log(repeatedSubstringPattern("abab"))
-
-</script>
