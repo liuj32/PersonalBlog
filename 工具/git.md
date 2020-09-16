@@ -89,3 +89,12 @@ git 切换分支
 # 10、git工具
 * 可视化工具 ：SourceTree
 * vscode插件：GitLens
+
+# 10、发版分支(release-20200805)合master
+1. 将release发版分支中commit message合并为一条信息
+2. 切换到master分支，`git rebase release-20200805`
+3. git push
+4. git tag 20200805
+5. git push --tags
+6. 删除远程release分支：git push -delete origin release-20200805
+7. 查看远程分支：git branch -r 

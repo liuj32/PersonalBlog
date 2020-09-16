@@ -10,3 +10,5 @@ css加载会阻塞js的执行
 
 2. 动画
 transition过渡、transform变换、animation动画
+
+3. 1px问题

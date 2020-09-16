@@ -22,9 +22,10 @@ const debounce = (func, time = 17, options = {
         if (timer) {
             clearTimeout(timer)
         }
+        console.log(timer, 'timer')
         if (options.leading && !timer) {
             console.log(1)
-            timer = setTimeout(null, time)
+            timer = setTimeout(() => {}, time)
             func.apply(options.context, args)
         }else{
             console.log(222)
