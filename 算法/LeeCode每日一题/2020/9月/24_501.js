@@ -1,16 +1,17 @@
-<script>
-    function TreeNode(val, left, right) {
-        this.val = (val===undefined ? 0 : val)
-        this.left = (left===undefined ? null : left)
-        this.right = (right===undefined ? null : right)
-    }
-    
-   var root = new TreeNode(1)
-   root.left = null
-   root.right = new TreeNode(2)
-   root.right.left = new TreeNode(2)
-    
-   var findMode = function(root) {
+/**
+ * 501. 二叉搜索树中的众数
+ * 
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
+var findMode = function(root) {
     if (root == null) {
         return []
     }
@@ -33,16 +34,11 @@
     var res = []
     dfs(root)
     var arr = Object.entries(map).sort((a, b) => b[1] - a[1])
-    console.log(arr)
     arr.forEach(([k, v]) => {
       if (v === arr[0][1]) {
-          res.push(k)
+          res.push(Number(k))
       }
     })
 
     return res
 };
-
-var res = findMode(root)
-console.log(res)
-</script>
