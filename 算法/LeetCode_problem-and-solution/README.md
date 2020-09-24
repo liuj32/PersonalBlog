@@ -17,7 +17,7 @@
 (六)队列/优先队列
 
 (七)树
-* 501. 二叉搜索树中的众数
+* [501.二叉搜索树中的众数](https://github.com/liuj32/PersonalBlog/edit/master/%E7%AE%97%E6%B3%95/LeetCode_problem-and-solution/501.+%e4%ba%8c%e5%8f%89%e6%90%9c%e7%b4%a2%e6%a0%91%e4%b8%ad%e7%9a%84%e4%bc%97%e6%95%b0)
 
 (八)递归
 
