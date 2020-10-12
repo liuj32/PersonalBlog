@@ -1,11 +1,14 @@
-<script>
+/**
+ * @param {string[]} words
+ * @param {string} pattern
+ * @return {string[]}
+ */
 var findAndReplacePattern = function(words, pattern) {
     var record = new Map()
     var patternArr = []
     var idx = 0
     for(var i=0;i<pattern.length;i++) {
         if (!record.has(pattern[i])) {
-            // patternMap[i] = rec
             record.set(pattern[i], idx)
             idx++
         }
@@ -13,29 +16,26 @@ var findAndReplacePattern = function(words, pattern) {
     }
 
     var res = []
-    console.log(record)
-    console.log(patternArr)
     for(var i=0;i<words.length;i++) {
         var tempMap = new Map()
         var idx = 0
-        for(var j=0;j<words[i].length;j++) {           
+        var flag = true
+        for(var j=0;j<words[i].length;j++) {
             if(!tempMap.has(words[i][j])) {
                 tempMap.set(words[i][j], idx)
                 idx++
             }
             if (tempMap.get(words[i][j]) != patternArr[j]) {
+                flag = false
                 break
-            } 
+            }
         }
-        res.push(words[i])
+
+        if (flag) {
+            res.push(words[i])
+        }
+        
     }
 
     return res
 };
-
-
-var res = findAndReplacePattern(["abc","deq","mee","aqq","dkd","ccc"],  "abb")
-console.log(res)
-
-
-</script>

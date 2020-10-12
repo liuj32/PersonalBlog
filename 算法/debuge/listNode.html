@@ -1,0 +1,53 @@
+<script>
+function ListNode(val) {
+     this.val = val;
+     this.next = null;
+}
+function arrToList(arr) {
+    var head = new ListNode()
+    var dummy = head
+    for(var i=0;i<arr.length;i++) {
+        dummy.next = new ListNode(arr[i])
+        dummy = dummy.next
+    }
+    return head.next
+}
+
+var arr = [3,2,0,-4]
+var head = arrToList(arr)
+head.next.next.next.next = head.next
+
+
+var detectCycle = function(head) {
+    if (head == null) {
+        return null
+    }
+    var slow = head, fast = head.next
+    var pos = 0
+    while(fast != slow) {
+        if (fast == null || fast.next == null) {
+            return null
+        }
+        pos++
+        fast = fast.next.next
+        slow = slow.next
+    }
+    var cur = head
+    console.log(pos)
+    while(pos > 1) {
+        cur = cur.next
+        pos--
+    }
+    return cur
+};
+
+var res = detectCycle(head)
+console.log(res)
+
+
+
+
+
+
+
+</script>
