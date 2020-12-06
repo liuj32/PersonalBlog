@@ -1,15 +1,27 @@
 <script>
-var numWaterBottles = function(numBottles, numExchange) {
-    var res = numBottles
-    var emptyBottles = numBottles
-    while (emptyBottles >= numExchange) {
-      var bottles = Math.floor(emptyBottles / numExchange)
-      res += bottles
-      emptyBottles = bottles + emptyBottles % numExchange
-    }
-    return res
-};
-var res = numWaterBottles(10, 3)
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @param {number} k
+ * @return {number[]}
+ */
+ var binary = function(nums, target, l, r) {
+  if (l > r) {
+    return -1
+  }
+
+  var index = l + Math.floor((r - l) / 2)
+  if (target === nums[index]) {
+    return index
+  } else if (target > nums[index]) {
+    return binary(nums, target, index + 1, r)
+  } else {
+    binary(nums, target, l, index - 1)
+  }
+}
+
+var res = binary([1,2,3], 1, 0, 2)
+
 console.log(res)
 
 
