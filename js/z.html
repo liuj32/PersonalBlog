@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="./Promise.js"></script>
+  <script>
+var pro = new MyPromise((resolve, reject) => {
+  resolve(3)
+  console.log(1)
+}).then(res => {
+  console.log(res)
+})
+
+
+function MyPromise(excute) {
+  this.resolveQueue = []
+  this.rejectQueue = []
+  this.val = null
+  this.state = 'pending'
+
+  function resolve(val) {
+    if (this.state == 'pending') {
+      setTimeout(() => {
+        this.state = 'resolved'
+        this.val = val
+        this.resolveQueue.forEach(cb => cb(val))
+      }, 0)
+    }
+  }
+
+  function reject(val) {
+    if (this.state == 'pending') {
+      setTimeout(() => {
+        this.state = 'rejected'
+        this.val = val
+        this.rejectQueue.forEach(cb => cb(val))
+      }, 0)
+    }
+  }
+
+  try{
+    excute(resolve, reject)
+  } catch(e) {
+    reject(e)
+  }
+}
+
+MyPromise.prototype.then = function(onResolve, onReject) {
+  if (this.state === 'resolved') {
+    return new MyPromise((resolve, reject) => {
+      setTimeout(() => {
+        try {
+          var x = onResolve(this.val)
+          if (x instanceof MyPromise) {
+            x.then(resolve)
+          } else {
+            resolve(x)
+          }
+        } catch(e) {
+          reject(e)
+        }
+      }, 0)
+    })
+  }
+  if (this.state === 'rejected') {
+    return new MyPromise((resolve, reject) => {
+      setTimeout(() => {
+        try {
+          var x = onReject(this.val)
+          if (x instanceof MyPromise) {
+            x.then(resolve)
+          } else {
+            resolve(x)
+          }
+        } catch(e) {
+          reject(e)
+        }        
+      }, 0);
+    })
+  }
+  if (this.state === 'pending') {
+    return new MyPromise((resolve, reject) => {
+      this.resolveQueue.push((val) => {
+        try {
+          let x = onResolve(val)
+          if (x instanceof MyPromise) {
+            x.then(resolve)
+          } else {
+            resolve(x)
+          }
+        } catch (e) {
+          reject(e)
+        }
+      })
+
+      this.rejectQueue.push((val) => {
+        try {
+          let x = onReject(val)
+          if (x instanceof MyPromise) {
+            x.then(resolve)
+          } else {
+            resolve(x)
+          }
+        } catch (e) {
+          reject(e)
+        }
+      })
+    })
+  }
+}
+
+
+function debounce(fn, wait) {
+  let timer = null
+  return function () {
+    if (timer) {
+      clearTimeout(timer)
+    }
+    setTimeout(function() {
+      fn()
+    }, wait)
+  }
+} 
+function throttle(fn, wait) {
+  let timer = null
+  return function (...args) {
+    if (!timer) {
+      fn(...args)
+      timer = setTimeout(() => {
+        timer = null
+      }, wait)
+    }
+  }
+} 
+
+function _instanceOf(a, b) {
+  while(a) {
+    if (a.__proto__ == b.prototype) return true
+    a = a.__proto__
+  }
+  return false
+}
+  
+
+
+
+  </script>
+</body>
+</html>

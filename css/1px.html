@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  .box {
+    position: relative;
+    width: 200px;
+    height: 20px;
+    margin: 5px auto;
+  }
+  .box3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-style: solid;
+    border-color: red;
+    border-width: 0;
+    
+    top: auto;
+    border-bottom-width: 1PX;
+    transform: scaleY(0.5);
+    /*  height: 0;
+    height: 0;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    border-bottom-width: 1PX;
+    transform-origin: 0 0;
+    transform-origin: 0 0;
+    height: 200%;
+    width: 200%;
+    height: calc(200% - 2px);
+    width: calc(200% - 2px);
+    transform: scaleY(0.5);*/
+  }  
+  </style>
+  <style lang="less">
+    /*
+@line-color: #dddddd;
+
+.set-line(@lineColor: @line-color) {
+  content: " ";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-style: solid;
+  border-color: @lineColor;
+  border-width: 0;
+}
+
+
+.sui-1px-top, .sui-1px-bottom, .sui-1px-left, .sui-1px-right, .sui-1px {
+  position: relative;
+}
+
+.sui-1px-top {
+  &::before {
+    .set-line();
+    height: 0;
+    transform-origin: 0 0;
+    border-top-width: 1PX;
+    @media (min-resolution: 2dppx) {
+      transform: scaleY(0.5);
+    }
+    // @media (min-resolution: 3dppx) {
+    //   transform: scaleY(0.3333);
+    // }
+  }
+}
+
+.sui-1px-bottom {
+  &::after {
+    .set-line();
+    height: 0;
+    transform-origin: 0 100%;
+    border-bottom-width: 1PX;
+    top: auto;
+
+    @media (min-resolution: 2dppx) {
+      transform: scaleY(0.5);
+    }
+    // @media (min-resolution: 3dppx) {
+    //   transform: scaleY(0.3333);
+    // }
+  }
+}
+
+.sui-1px-left {
+  &::before {
+    .set-line();
+    width: 0;
+    transform-origin: 0 0;
+    border-left-width: 1PX;
+    right: auto;
+    @media (min-resolution: 2dppx) {
+      transform: scaleX(0.5);
+    }
+    // @media (min-resolution: 3dppx) {
+    //   transform: scaleX(0.3333);
+    // }
+  }
+}
+
+.sui-1px-right {
+  &::after {
+    .set-line();
+    width: 0;
+    transform-origin: 100% 0;
+    border-right-width: 1PX;
+    left: auto;
+    @media (min-resolution: 2dppx) {
+      transform: scaleX(0.5);
+    }
+    // @media (min-resolution: 3dppx) {
+    //   transform: scaleX(0.3333);
+    // }
+  }
+}
+
+.sui-1px {
+  &::before {
+    .set-line();
+    transform-origin: 0 0;
+    border-width: 1PX;
+    @media (min-resolution: 2dppx) {
+      height: 200%;
+      width: 200%;
+      height: calc(200% - 2px);
+      width: calc(200% - 2px);
+      transform: scale(0.5);
+    }
+    // @media (min-resolution: 3dppx) {
+    //   height: 300%;
+    //   width: 300%;
+    //   transform: scale(0.3333);
+    // }
+  }
+}    */
+  </style>
+</head>
+<body>
+  <view class="box box2">1</view>
+</body>
+</html>

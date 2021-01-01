@@ -6,7 +6,7 @@ const REJECTED = 3;
 function MyPromise(executor) {
     let self = this;
     this.resolveQueue = [];
-    this.rejectQueue = [];
+    this.rejectQueue = [];  
     this.state = PENDING;
     this.val = undefined;
     function resolve(val) {

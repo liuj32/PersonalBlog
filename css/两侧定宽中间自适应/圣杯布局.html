@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .header {
+            height: 60px;
+            background: #ccc;
+        }
+        .parent{
+            padding: 0 215px 0 115px; 
+        }
+        .center {
+            height: 500px;
+            float: left;
+            width: 100%;
+            background: #eeff2b;
+
+        }
+
+        .left {
+            margin-left: -100%;
+            /*使#left上去一行*/
+            position: relative;
+            left: -115px;        
+            /*  */
+            /*相对定位调整#left的位置,正值大于或等于自身宽度*/
+            float: left;
+            width: 100px;
+            height: 500px;
+            background: #f00;
+            margin-left: -100%;
+        }
+
+        .right {
+            position: relative;
+            left: 215px;
+            /*相对定位调整#right的位置,大于或等于自身宽度*/
+            float: left;
+            width: 200px;
+            margin-left: -200px;
+            height: 500px;
+            background: #0f0;
+        }
+
+        .footer {
+            clear: both;
+            /*注意清除浮动!!*/
+            height: 60px;
+            background: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">头部</div>
+    <div class="parent">
+        <div class="center">
+            中间
+            <hr>
+        </div>
+        <div class="left">左</div>
+        <div class="right">右</div>
+    </div>
+    <div class="footer">底部</div>
+</body>
+
+</html>
