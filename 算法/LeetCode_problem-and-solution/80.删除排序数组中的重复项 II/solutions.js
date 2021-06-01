@@ -1,20 +1,14 @@
 /**
- * @param {number[]} rowSum
- * @param {number[]} colSum
- * @return {number[][]}
+ * @param {number[]} nums
+ * @return {number}
  */
-var restoreMatrix = function(rowSum, colSum) {
-    var n = rowSum.length, m = colSum.length;
-    var ans = []
-    for(var i=0;i<n;i++) {
-        ans[i] = []
-    }
-    for (var i = 0; i < n; ++i) {
-        for (var j = 0; j < m; ++j) {
-            ans[i][j] = Math.min(rowSum[i], colSum[j]);
-            rowSum[i] -= ans[i][j];
-            colSum[j] -= ans[i][j];
+ var removeDuplicates = function(nums) {
+    var m = nums.length
+    var i = 0
+    for(var num of nums) {
+        if (i < 2 || num > nums[i-2]) {
+            nums[i++] = num
         }
     }
-    return ans;
+    return i
 };
