@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  
+  var result = []
+function Permutation(str)
+{
+    // write code here
+    result = []
+    if(str.length == 0){
+        return result;
+    }
+    var arr = str.split('')
+    helper(arr,'');
+    return result;
+}
+
+function helper(arr, path){
+    if(arr.length == 0){
+        return result.push(path)
+    } {
+     for(var i=0,ilen=arr.length;i<ilen;i++){
+         var p = arr.splice(i, 1)
+         path += p
+         helper(arr, path)
+         arr.splice(i, 0, p)
+         path = path.slice(0, path.length -1)
+        }        
+    }
+}
+   var sortTmp = "abc"
+  console.log( sortTmp = sortTmp.slice(0,sortTmp.length-1))
+
+    console.log( Permutation('abc')  )
+  </script>
+</body>
+</html>

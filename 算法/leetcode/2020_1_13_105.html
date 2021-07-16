@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script src="./tree.js"></script>
+  <script>
+
+ function TreeNode(val) {
+     this.val = val;
+     this.left = this.right = null;
+ }
+
+ var buildTree = function(preorder, inorder) {
+   var pre_idx = 0;
+   return helper(preorder, inorder,pre_idx, 0, preorder.length)
+
+
+};
+
+function helper(preorder, inorder,pre_idx,  in_left, in_right) {
+  if(in_left == in_right){
+      return null
+  }
+
+  var root_val = preorder[pre_idx]
+  var root = new TreeNode(root_val)
+  console.log(root)
+  pre_idx++;
+  var index = inorder.indexOf(root_val)
+  root.left = helper(preorder, inorder,pre_idx, in_left, index)
+  root.right = helper(preorder, inorder,pre_idx, index+1, in_right)
+  return root
+}
+
+    console.log( buildTree([3], [3])    )
+  </script>
+</body>
+</html>

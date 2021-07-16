@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+function TreeNode(val) {
+  this.val = val;
+  this.left = this.right = null;
+}
+
+var idx = 0
+function reConstructBinaryTree(pre, vin)
+{
+    // write code here
+    var idx_map = new Map();
+    for(var i=0, ilen = vin.length; i<ilen;i++){
+        idx_map.set(vin[i], i)
+    }
+    return helper(0, pre.length, idx_map, pre, vin)
+}
+    
+function helper(in_left, in_right, idx_map, pre, vin){
+    if(in_left == in_right){
+        return null
+    }
+    
+    var index = idx_map.get(pre[idx])
+    var root = new TreeNode(pre[idx])
+    idx++;    
+    root.left = helper(in_left, index, idx_map, pre, vin)
+    root.right = helper(index+1, in_right, idx_map, pre, vin)
+    return root;
+} 
+
+console.log(reConstructBinaryTree([1], [1]))
+  </script>
+</body>
+</html>

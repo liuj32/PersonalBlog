@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  
+  function FindNumbersWithSum(array, sum)
+{
+    // write code here
+    var len = array.length;
+    var res = []
+    var mapArr = {}
+    for(var j =0;j<len;j++){
+        mapArr[array[j]] = j;
+    }
+    for(var i =0;i<len;i++){
+        var two = sum - array[i]
+        if(mapArr[two] != null){
+            res = [array[i], two]
+            break;
+        }
+    }
+    return res;
+}
+
+function FindNumbersWithSum2(array, sum)
+    {
+        // write code here
+        var i= 0,j = array.length-1;
+        if(array.length <2){
+            return []
+        }
+        var res = []
+        while(i < j){
+            var curSum = array[i] + array[j]
+            if(curSum == sum){
+                res = [array[i], array[j]]
+                break;
+            } else if(curSum > sum){
+                j--;
+            }else {
+               i++;
+            }
+        }
+        return res;
+    }
+
+
+    console.log( FindNumbersWithSum2([1,2,4,7,11,15],15)  )
+  </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+var maxArea = function(height) {
+    var len = height.length;
+    var max = 0
+    for(var i=0;i<len;i++){
+        for(var j=i+1;j<len;j++){
+          var temp =   (j - i) * Math.min(height[i], height[j]) 
+          if(temp > max) max = temp;
+        }
+    }
+    return max;
+};
+
+var maxArea1 = function(height) {
+  var maxArea = 0;
+  var i = 0, j = height.length - 1;
+  while(i< j){
+    var temp =   (j - i) * Math.min(height[i], height[j])
+    maxArea = temp < maxArea ? maxArea : temp;
+    if(height[i] < height[j]){
+      maxArea =   (j - i) * height[i]
+        i++;
+    }else{
+        j--;
+    }
+  }
+  return maxArea;
+};
+
+
+      console.log(   )
+    </script>
+</body>
+</html>

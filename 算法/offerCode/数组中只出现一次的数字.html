@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  
+  function FindNumsAppearOnce(array)
+{
+    // write code here
+    // return list, 比如[a,b]，其中ab是出现一次的两个数字
+    var mapArr = {}
+    var len = array.length;
+    var  res = []
+    if(len == 0) return null;
+    for(var i=0;i<len;i++){
+        if(mapArr[array[i]] == null){
+            mapArr[array[i]] = 1;
+        } else {
+            mapArr[array[i]]++;
+        }
+    }
+    for(var k in mapArr){
+        if(mapArr[k] ==1){
+            res.push(k)
+        }
+    }
+    return res;
+}
+
+
+
+    console.log(   )
+  </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /**
+     * 快速排序
+     */
+function sortQuick(arr){
+    if(arr.length == 0) {
+      return [];
+    }
+    if(arr.length == 1){
+        return arr[0]
+    }
+    var mid = arr.splice(0, 1)
+    var left = [], right = []
+    for(var i=0;i<arr.length;i++) {
+      if(arr[i] <= mid) {
+        left.push(arr[i])
+      } else {
+        right.push(arr[i])
+      }
+    }
+    return  sortQuick(left).concat(mid, sortQuick(right));
+}
+
+
+  </script>
+</body>
+</html>

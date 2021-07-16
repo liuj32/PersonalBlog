@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  
+  function FindGreatestSumOfSubArray(array)
+{
+    // write code here
+    var len = array.length;
+    var max = -Infinity;
+    for(var i=0;i<len;i++) {
+        var sum = 0;
+        for(var j=i;j<len;j++){
+            sum += array[j]
+            if(sum > max){
+                max = sum;
+            }
+        }
+    }
+    return max;
+}   
+
+function FindGreatestSumOfSubArray2(array)
+{
+    // write code here
+    var len = array.length
+    if(len == 0) return 0
+    var max = array[0]
+    var pre = array[0]
+    for(var i=1;i<len;i++) {
+       if(pre < 0)
+           pre = 0
+       max = Math.max(max, pre+array[i])
+       pre = pre + array[i]
+    }
+    return max;
+}
+
+    console.log(   )
+  </script>
+</body>
+</html>
