@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .parent {
+            height: 500px;
+            display: grid;
+            grid-template-columns: 100px auto 200px;
+            grid-template-rows: 60px auto 60px;
+            grid-template-areas:
+                "header header header"
+                "leftside main rightside"
+                "footer footer footer";
+        }
+
+        .header {
+            grid-area: header;
+            background: #ccc;
+        }
+
+        .center {
+            grid-area: main;
+            background: #eeff2b;
+
+        }
+
+        .left {
+            grid-area: leftside;
+            background: #f00;
+        }
+
+        .right {
+            grid-area: rightside;
+            background: #0f0;
+        }
+
+        .footer {
+            grid-area: footer;
+            clear: both;
+            /*注意清除浮动!!*/
+            background: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <div class="header">头部</div>
+
+        <div class="left">左</div>
+        <div class="center">
+                中间
+                <hr>
+            </div>
+        <div class="right">右</div>
+        <div class="footer">底部</div>
+    </div>
+
+</body>
+
+</html>

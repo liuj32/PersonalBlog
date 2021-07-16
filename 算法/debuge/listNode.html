@@ -1,0 +1,82 @@
+<script>
+function ListNode(val) {
+     this.val = val;
+     this.next = null;
+}
+function arrToList(arr) {
+    var dummy = new ListNode()
+    var cur = dummy
+    for(var i=0;i<arr.length;i++) {
+        cur.next = new ListNode(arr[i])
+        cur = cur.next
+    }
+    return dummy.next
+}
+
+var reverse = (head) => {
+       var prev = null, cur = head
+       while(cur) {
+           tail = cur.next
+           cur.next = prev
+           prev = cur
+           cur = tail
+       }
+        return prev
+}
+
+var head = arrToList([1,2,3,4])
+console.log(head)
+
+var reorderList = function(head) {
+   var reverse = (head) => {
+       var prev = null, cur = head
+       while(cur) {
+           tail = cur.next
+           cur.next = prev
+           prev = cur
+           cur = tail
+       }
+        return prev
+   }
+
+   if (head == null) {
+       return null
+   }
+   var slow = head, fast = head
+   while(fast.next && fast.next.next) {
+       slow = slow.next
+       fast = fast.next.next
+   }
+   var head2 = slow.next
+   head2 = reverse(slow.next)
+   slow.next = null
+   // 插入
+   var dummy = new ListNode()
+   var cur = dummy
+   while(head || head2) {
+        if (head) {
+            cur.next = head
+            head = head.next
+            cur = cur.next
+        }
+        if (head2) {
+            cur.next = head2
+            cur = cur.next
+            head2 = head2.next
+        }
+   }
+
+   return dummy.next
+}
+
+
+var res = reorderList(head)
+console.log(res)
+
+
+
+
+
+
+
+</script>
