@@ -1,37 +1,20 @@
-function run(gen) {
-  let g = gen();
-
-  function next(data) {
-    let result = g.next(data);
-    if (result.done) return result.value;
-    if (result.value instanceof Promise) {
-      result.value.then(data => next(data));
-    } else {
-      result.value(next);
-    }
+// cb 也就是编译过的 test 函数
+function generator(cb) {
+    return (function() {
+      var object = {
+        next: 0,
+        stop: function() {}
+      };
+  
+      return {
+        next: function() {
+          var ret = cb(object);
+          if (ret === undefined) return { value: undefined, done: true };
+          return {
+            value: ret,
+            done: false
+          };
+        }
+      };
+    })();
   }
-
-  return next();
-}
-
-// ======== e.g. ==========
-
-function func(data, cb) {
-  console.log(data);
-  cb();
-}
-
-function *gen() {
-  let a = yield Promise.resolve(1);
-  console.log(a);
-  let b = yield Promise.resolve(2);
-  console.log(b);
-  yield func.bind(null, a + b);
-}
-run(gen);
-/**
-output:
-1
-2
-3
-**/

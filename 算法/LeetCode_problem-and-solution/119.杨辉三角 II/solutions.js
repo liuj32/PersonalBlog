@@ -16,3 +16,15 @@ var getRow = function(rowIndex) {
   
     return res
   };
+
+  // O(1)空间复杂度，不考虑返回值的空间复杂度
+  var getRow = function(rowIndex) {
+    var res = new Array(rowIndex+1).fill(0)
+    for(var i=0;i<=rowIndex;i++) {
+      res[0] = 1
+      for(var j=i;j>0;j--) {
+        res[j] += res[j-1]
+      }
+    }
+    return res
+  };

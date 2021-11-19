@@ -1,38 +1,47 @@
 <script>
-    function TreeNode(val, left, right) {
+    function TreeNode(val, left, right, next) {
         this.val = (val===undefined ? 0 : val)
         this.left = (left===undefined ? null : left)
         this.right = (right===undefined ? null : right)
+        this.next = next === undefined ? null : next;
     }
     
-   var root = new TreeNode(-2)
-   root.left = null
-   root.right = new TreeNode(-3)
+   var root = new TreeNode(1)
+   root.left = new TreeNode(2)
+   root.right = new TreeNode(3)
     
-   var pathSum = function(root, sum) {
-    
-    var dfs = (root, sum, temp) => {
-        if (
-            root
-            && root.left == null
-            && root.right == null
-            && sum === root.val ) {
-            res.push([...temp, root.val])
-            return
-        }
-        if (root == null) {
-            return
-        }
-
-        dfs(root.left, sum - root.val, [...temp, root.val])
-        dfs(root.right, sum - root.val, [...temp, root.val])
+var connect = function(root) {
+  if (!root) {
+    return
+  }
+  var stack = []
+  stack.push(root)
+  while(stack.length) {
+    var levelSize = stack.length
+    var curLevelHead = stack.shift()
+    if (node.left) {
+        stack.push(left)
+      }
+      if (node.right) {
+        stack.push(right)
+      }    
+    for(var i=0;i<levelSize-1;i++) {
+      var node = stack.shift()
+      curLevelHead.next = node
+      curLevelHead = curLevelHead.next
+      if (node.left) {
+        stack.push(left)
+      }
+      if (node.right) {
+        stack.push(right)
+      }      
     }
+    curLevelHead.next = null
+  }
 
-    var res = []
-    dfs(root, sum, [])
-    return res
-};
+  return root
+};   
 
-var res = pathSum(root, -5)
+var res = connect(root)
 console.log(res)
 </script>

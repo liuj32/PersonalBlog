@@ -1,147 +1,144 @@
-  // new Promise((resolve, reject) => {
-  //     resolve('')
-  // }).then(() => {}).catch(() => {})
-  
 
-  const  PENDING = 1
-  const  FULFILLED = 2
-  const  REJECTED = 3
+const PENDING = 1;
+const FULFILLED = 2;
+const REJECTED = 3;
 
-  function MyPromise(executor) {
-    let self = this
-    this.state = PENDING
-    this.val = ''
-    this.resolveQueue = []
-    this.rejectQueue = []
+function MyPromise(executor) {
+    let self = this;
+    this.resolveQueue = [];
+    this.rejectQueue = [];  
+    this.state = PENDING;
+    this.val = undefined;
     function resolve(val) {
-      if (self.state === PENDING) {
-        setTimeout(() => {
-          self.state = FULFILLED
-          self.val = val
-          self.resolveQueue.forEach((cb) => cb(val))
-        })
-      }
+        if (self.state === PENDING) {
+            setTimeout(() => {
+                self.state = FULFILLED;
+                self.val = val;
+                self.resolveQueue.forEach(cb => cb(val));
+            });
+        }
     }
     function reject(err) {
-      if (self.state === PENDING) {
-        setTimeout(() => {
-          self.state = REJECTED
-          self.val = err
-          self.rejectQueue.forEach((cb) => cb(err))
-        })
-      }
+        if (self.state === PENDING) {
+            setTimeout(() => {
+                self.state = REJECTED;
+                self.val = err;
+                self.rejectQueue.forEach(cb => cb(err));
+            });
+        }
     }
     try {
-      executor(resolve, reject)
-    } catch (e) {
-      reject(e)
+        // 回调是异步执行 函数是同步执行
+        executor(resolve, reject);
+    } catch(err) {
+        reject(err);
     }
-  }
+}
 
-  MyPromise.prototype.then = function(onResolve, onReject) {
-    const self = this
+MyPromise.prototype.then = function(onResolve, onReject) {
+    let self = this;
+    // 不传值的话默认是一个返回原值的函数
+    onResolve = typeof onResolve === 'function' ? onResolve : (v => v);
+    onReject = typeof onReject === 'function' ? onReject : (e => { throw e });
     if (self.state === FULFILLED) {
-      return new MyPromise((resolve, reject) => {
-        try {
-          var x = onResolve(self.val)
-          if (x instanceof MyPromise) {
-            x.then(resolve)
-          } else {
-            resolve(x)
-          }
-        } catch(e) {
-          reject(x)
-        }
-      })
+        return new MyPromise(function(resolve, reject) {
+            setTimeout(() => {
+                try {
+                    let x = onResolve(self.val);
+                    if (x instanceof MyPromise) {
+                        x.then(resolve);
+                    } else {
+                        resolve(x);
+                    }
+                } catch(e) {
+                    reject(e);
+                }
+            });
+        });
     }
+
     if (self.state === REJECTED) {
-      return new MyPromise((resolve, reject) => {
-        try {
-          var x = onReject(self.val)
-          if (x instanceof MyPromise) {
-            x.then(resolve)
-          } else {
-            reject(x)
-          }
-        } catch(e) {
-          reject(x)
-        }
-      })
+        return new MyPromise(function(resolve, reject) {
+            setTimeout(() => {
+                try {
+                    let x = onReject(self.val);
+                    if (x instanceof MyPromise) {
+                        x.then(resolve);
+                    } else {
+                        resolve(x);
+                    }
+                } catch(e) {
+                    reject(e);
+                }
+            });
+        });
     }
+    
     if (self.state === PENDING) {
-      return new MyPromise((resolve, reject) => {
-        self.resolveQueue.push((val) => {
-          try {
-            let x = onResolve(val);
-            if (x instanceof MyPromise) {
-              x.then(resolve);
-            } else {
-              resolve(x);
-            }
-          } catch(e) {
-            reject(e);
-          }
-        })
-        self.rejectQueue.push((val) => {
-          try {
-            let x = onReject(val);
-            if (x instanceof MyPromise) {
-              x.then(resolve);
-            } else {
-              reject(x);
-            }
-          } catch(e) {
-            reject(e);
-          }
-        })
-      })
+        return new MyPromise(function(resolve, reject) {
+            self.resolveQueue.push((val) => {
+                try {
+                    let x = onResolve(val);
+                    if (x instanceof MyPromise) {
+                        x.then(resolve);
+                    } else {
+                        resolve(x);
+                    }
+                } catch(e) {
+                    reject(e);
+                }
+            });
+            self.rejectQueue.push((val) => {
+                try {
+                    let x = onReject(val);
+                    if (x instanceof MyPromise) {
+                        x.then(resolve);
+                    } else {
+                        resolve(x);
+                    }
+                } catch(e) {
+                    reject(e);
+                }
+            });
+        });
     }
-  }
+}
 
-  MyPromise.prototype.catch = function(onReject) {
-    this.then(null, onReject)
-  }
+MyPromise.prototype.catch = function(onReject) {
+    return this.then(null, onReject);
+}
 
-  MyPromise.all = function(promises) {
-    return new Promise((resove, reject) => {
-      var cnt = 0
-      var result = []
-      for(var i=0;i<promises.length;i++) {
-        promises[i].then((res) => {
-          result[i] = res
-          cnt++
-          if (cnt === promises.length) this.resolve(result)
-        }, err => {
-          reject(err)
-        })
-      }
+MyPromise.all = function(promises) {
+    return new MyPromise(function(resolve, reject) {
+        let cnt = 0;
+        let result = [];
+        for (let i = 0; i < promises.length; i++) {
+            promises[i].then(res => {
+                result[i] = res;
+                if (++cnt === promises.length) resolve(result);
+            }, err => {
+                reject(err);
+            })
+        }
+    });
+}
+
+MyPromise.race = function(promises) {
+    return new MyPromise(function(resolve, reject) {
+        for (let i = 0; i < promises.length; i++) {
+            promises[i].then(resolve, reject);
+        }
+    });
+}
+
+MyPromise.resolve = function(val) {
+    return new MyPromise(function(resolve, reject) {
+        resolve(val);
+    });
+}
+
+MyPromise.reject = function(err) {
+    return new MyPromise(function(resolve, reject) {
+        reject(err);
     })
-  }
-
-  MyPromise.race = function(promises) {
-    return new MyPromise((resolve, reject) => {
-      for(var i=0;i<promises;this.length;i++) {
-        promises[i].then(resolve, reject)
-      }
-    })
-  }
-
-  MyPromise.resolve = function(val) {
-    return new MyPromise((resolve, reject) => {
-      resolve(val)
-    })
-  }
-
-  MyPromise.reject = function(err) {
-    return new MyPromise((resolve, reject) => {
-      reject(err)
-    })
-  }
-
-  new MyPromise((resolve) => {
-    resolve('')
-  }).then(() => {
-    console.log(1)
-  }).then(() => {
-    console.log(2)
-  })
+}
