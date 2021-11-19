@@ -5,47 +5,175 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="">
   <style>
     * {
-      padding: 0;
       margin: 0;
+      padding: 0;
     }
-    .inner {
-      width: 0;
-    height: 0;
-    border: 50px solid transparent;
-    border-top: 50px solid blue;
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+    .inner1 {
+      /* float: left; */
+      width: 100px;
+      height: 100%;
+      /* background-color: red; */
+    }
+    .inner2 {
+      margin-left: 100px;
+      height: 100%;
+      /* overflow: hidden; */
+      /* background-color: yellow; */
+    }
+    .box {
+      display: flex;
+    }
+    .a {
+      flex: 1;
     }
   </style>
 </head>
 <body>
+  <div class="box">
+    <div class="a"></div>
+    <!-- <div class="inner inner1"></div>
+    <div class="inner inner2"></div> -->
+  </div>
   <script>
+    
+    // Reflect.ownKeyS
+    // Object.getOwnPropertyDescriptor()
+    
+    function copy(obj, hash = new WeakMap()) {
+    const isComplexData = (data) => data !== null && typeof data === 'object'
+
+    if (obj.constrcutor === Date) {
+      return new Date(obj)
+    }
+
+    if (obj.constrcutor === RegExp) {
+      return new RegExp(obj)
+    }
+
+    if (hash.has(obj)) {
+      return hash.get(obj)
+    }
+
+    const desc = Object.getOwnPropertyDescriptors(obj)
+    const copyObj = Object.create(Object.getPrototypeOf(obj), desc)
+    hash.set(obj, copyObj)
+    for(var k in Reflect.ownKeys(obj)) {
+      copyObj[k] = isComplexData(obj[k]) ? copy(obj[k], hash) : obj[k]
+    }
+    return copyObj
+    }
+
     function debounce(fn, delay) {
-      return function(args) {
-        var that = this
-        clearTimeout(fn.id)
-        fn.id = setTimeout(function() {
-          fn.call(that, args)
+      let timer 
+      return function () {
+        var context = this,
+            args = arguments
+        if (timer) {
+          clearTimeout(timer)
+          timer = null
+        }
+        timer = setTimeout(() => {
+          fn.call(context, args)
         }, delay)
       }
     }
 
     function throttle(fn, delay) {
+      var lastTime = Date.now()
       return function() {
-        var that = this
-        var args = arguments
-        if(!fn.id ) {
-          fn.id = setTimeout(function() {
-            fn.apply(that, args)
-            timer = null
-          }, delay)
+        var context = this,
+            args = arguments
+        current = Date.now()
+        if (current - lastTime >= delay) {
+          lastTime = Date.now()
+          fn.call(context, args)
         }
       }
     }
 
+
+    function mySetInterval(fn, delay) {
+      var timer = setTimeout(() => {
+        fn()
+        mySetInterval(fn, delay)
+      }, delay)
+      return timer
+    }
+    
+    function request({
+      repeatRry = false,
+      retryNum = 3
+    }) {
+      ajaxRequest()
+        .then(() => {})
+        .catch(() => {
+          if (repeatRry && retryNum > 0) {
+            return request({ retryNum: retryNum - 1 })
+          }
+        })
+    }
+
+
+    var thousandSeparator = function(n) {
+      var res = ''
+      while(n) {
+        const cur = n % 10
+        n = Math.floor(n / 10)
+        ++count
+        res += cur
+        if(count % 3 === 0 && n) {
+          res += '.'
+        }
+      }
+    };
+
+    var thousandSeparator = function(n) {
+      let count = 0;
+      let ans = "";
+      do {
+          let cur = n % 10;
+          n = Math.floor(n / 10);
+          ans += cur.toString();
+          ++count;
+          if (count % 3 == 0 && n) {
+              ans += '.';
+          }
+      } while (n);
+      return ans.split('').reverse().join('');
+    }
+    
+    var lengthOfLIS = function(nums) {
+      var m = nums.length
+      var dp = new Array(m).fill(1)
+      for(var i=0;i<m;i++) {
+        for(var j=0;i<i;j++) {
+          if (nums[j] < nums[i]) {
+            dp[i] = Math.max(dp[i], dp[j] + 1)
+          }
+        }
+      }
+    };
+
+
+    function promiseDemo 
+    var promise1 = Promise.resolve(3)
+    var promise2 = Promise.reject(2)
+    Promise.all([
+      promise1,
+      promise2
+    ]).then((res) => {
+      console.log(res)
+    }).catch((err) => {
+      console.log(err)
+    })
+    
+ 
   </script>
-    <div class="inner"></div>
-</div>
 </body>
 </html>

@@ -29,3 +29,6 @@
 
 4. NextTick 原理分析
 
+
+## vuex
+1. 子组件怎么获取到store数据
