@@ -1,6 +1,14 @@
 <script>
-var obj = new LRUCache(3)
-console.log(obj.get(3))
+Object.defineProperty(obj, 'key', {
+  configurable: false, // 能否delete，能否修改该属性，能否修改访问器属性(false为不可重新定义)，默认为true
+  enumerable: false, // 对象属性是否可通过for-in循环，false为不可循环，默认为true
+  writable: false, // 对象属性是否可修改，false为不可修改，默认为true
+  value: 'value', // 对象属性的默认值，默认值为undefined
+})
+
+var obj = new Set()
+obj.add('571')
+console.log(obj.has('1688_572'))
 
 
 </script>

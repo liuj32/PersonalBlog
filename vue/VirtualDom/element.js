@@ -1,4 +1,4 @@
-export default class Element {
+class Element {
   /**
    * @param {String} tag 'div'
    * @param {Object} props { class: 'item' }
@@ -63,4 +63,4 @@ export default class Element {
     }
     return el
   }
-}  
+}

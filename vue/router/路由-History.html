@@ -26,8 +26,9 @@
       history.pushState({ content: path }, null, path);
     }
     /**
-     * 调用 history.pushState() 或者 history.replaceState() 不会触发 popstate 事件。
-     * 点击后退、前进按钮、或者在 js 中调用 history.back()、history.forward()、history.go() 方法会触发
+     * 点击后退、前进按钮、或者在 js 中调用 history.back()、history.forward()、history.go() 方法会触发popState事件
+     * 点击跳转(调用 history.pushState() 或者 history.replaceState()) 不会触发 popstate 事件，不会向服务器发送请求
+     * 刷新页面或者输入url，会向服务器发送请求，使用此方式需要后端配合重定向
      */
     window.addEventListener('popstate', (e) => {
       let content = e.state && e.state.content;

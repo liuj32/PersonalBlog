@@ -1,64 +1,100 @@
-class Vue{
-    constructor(opt){
-        this.observer(opt.data)
-        let root = document.querySelector(opt.el)
-        this.compile(root)
-    }
 
-    observer(data){
-        this.data = data
-        Object.keys(data).forEach(key => {
-            data["_"+key] = data[key]
-            let observer = new Observer()
-            Object.defineProperty(data, key, {
-                enumerable: true,
-                configurable: true,                
-                get (){
-                   if(Observer.target){
-                       console.log('家了')
-                       observer.addSub(Observer.target)
-                   }
+class Watch {
+  obj;
+  key;
+  value;
 
-                   return data["_"+key]
-                },
+  constructor(obj, key, cb) {
+    // 将Dep.target指向自己
+    // 然后出发属性的getter 添加监听
+    // 最后将Dep.target置为空
+    Dep.target = this
+    this.cb = cb
+    this.obj = obj 
+    this.key = key
+    this.value = obj[key]
+    Dep.target = null
+  }
 
-                set(val){
-                    data['_'+key] = val
-                    observer.publishSub(val)
-                }
-            })
-        })
-    }
+  addDep(dep) {
+    dep.addSub(this)
+  }
 
-    compile(root){
-        [].slice.call(root.childNodes).forEach(node => {
-            console.log(node)
-            if(node.nodeType !=1 && /\{\{\s*(.*)\s*\}\}/.test(node.textContent)){
-                let key = /\{\{\s*(.*)\s*\}\}/.exec(node.textContent)[1]
-                node.textContent = this.data[key]
-                Observer.target = node 
-                this.data[key]                
-                Observer.target = null
-            }else {
-                this.compile(node)
-            }
-        })
-    }
-
+  update() {
+    // 获取新值
+    this.value = this.obj[key]
+    // 调用 update 方法更新 Dom
+    this.cb(this.value) // queueWatch
+  }
 }
 
-class Observer{
-    constructor(){
-        this.subNode = []
-    }
+class Dep {
+  static target;
+  subs;
 
-    addSub(node){
-        this.subNode.push(node)
+  constructor() {
+    this.subs = []
+  }
+
+  addSub(sub) {
+    this.subs.push(sub)
+  }
+
+  depend() {
+    if (Dep.target) {
+      Dep.target.addDep(this)
     }
-    
-    publishSub(val){
-        this.subNode.forEach(node => {
-            node.textContent = val;
-        })
-    }
+  }
+
+  notify() {
+    this.subs.forEach((sub) => {
+      sub.update()
+    })
+  }
 }
+
+function Observe(obj) {
+  if (!obj || typeof obj !== 'object') {
+    return
+  }
+  Object.keys(obj).forEach((key) => {
+    defineReactive(obj, key, obj[key])
+  })
+}
+
+function defineReactive(obj, key, val) {
+  const dep = new Dep()
+  Object.defineProperty(obj, key, {
+    get() {
+      if (Dep.target) {
+        dep.depend()
+      }
+      return val
+    },
+    set(newVal) {
+      val = newVal
+        
+      dep.notify()
+    }
+  })
+}
+
+
+function update(value) {
+  document.querySelector('div').innerText = value
+}
+
+var data = { name: 'yck' }
+observe(data)
+// 模拟解析到 `{{name}}` 触发的操作
+new Watcher(data, 'name', update)
+// update Dom innerText
+data.name = 'yyy'
+
+
+// Object.defineProperty(obj, 'key', {
+//   configurable: false, // 能否delete，能否修改该属性，能否修改访问器属性(false为不可重新定义)，默认为true
+//   enumerable: false, // 对象属性是否可通过for-in循环，false为不可循环，默认为true
+//   writable: false, // 对象属性是否可修改，false为不可修改，默认为true
+//   value: 'value', // 对象属性的默认值，默认值为undefined
+// })
