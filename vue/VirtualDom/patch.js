@@ -9,7 +9,6 @@ function patch(node, patchs) {
     changeDom(node, changes)
   }
   let last = null
-  debugger
   if (childNodes && childNodes.length) {
     childNodes.forEach((item, i) => {
       index =
