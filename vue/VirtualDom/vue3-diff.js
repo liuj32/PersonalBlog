@@ -23,7 +23,7 @@ function vue3Diff(prevChildren, nextChildren, parent) {
     nextNode = prevChildren[nextEnd]
   }
 
-  // 新增、删除
+  // 新增、删除、移动
   if (j > prevEnd && j <= nextEnd) {
     let nextpos = nextEnd + 1,
       refNode = nextpos >= nextChildren.length
@@ -34,6 +34,10 @@ function vue3Diff(prevChildren, nextChildren, parent) {
   } else if (j > nextEnd && j <= prevEnd) {
     while(j <= prevEnd) parent.removeChild(prevChildren[j++].el)
   } else {
+    // 以上都为前置与后置的预处理
+    // a b f c d
+    // a f c b d
+
     let prevStart = j,
       nextStart = j,
       nextLeft = nextEnd - nextStart + 1,     // 新列表中剩余的节点长度

@@ -25,7 +25,9 @@ function vue2Diff(prevChildren, nextChildren, parent) {
       newStartIndex++
     } else {
       // 在旧列表中找到/未找到和新列表头节点key 相同的节点
-      let newtKey = newStartNode.key,
+      // 1 3 2 6
+      // 1 2 4
+      let newKey = newStartNode.key,
       oldIndex = prevChildren.findIndex(child => child.key === newKey);
 
       if (oldIndex > -1) {

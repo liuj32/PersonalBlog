@@ -1,8 +1,8 @@
-<script>
+// 字符串消消乐
 
 var str = 'aaaaaffssfds'
 
-function fn(str) {
+function resolve(str) {
   var stack = []
   for(var i=0;i<str.length;i++) {
     if (stack.length && stack[stack.length-1] != str[i]) {
@@ -24,7 +24,5 @@ function fn(str) {
   return stack.join('')
 }
 
-var res= fn(str)
+var res= resolve(str)
 console.log(res)
-
-</script>
