@@ -2,7 +2,7 @@
 
 var str = 'aaaaaffssfds'
 
-function resolve(str) {
+function solve(str) {
   var stack = []
   for(var i=0;i<str.length;i++) {
     if (stack.length && stack[stack.length-1] != str[i]) {
@@ -24,5 +24,5 @@ function resolve(str) {
   return stack.join('')
 }
 
-var res= resolve(str)
+var res= solve(str)
 console.log(res)

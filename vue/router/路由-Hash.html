@@ -10,14 +10,19 @@
     <a href="#center">个人中心页</a>
     <a href="#help">帮助页</a>
   </header>
-  <section id="content"></section>
+  <section id="content">asdfsafd</section>
   <script>
     // 手动刷新不会触发hashchange事件，url的hash片段手动改变，回车会触发(非第一次)
     // 前进、后退按钮能够触发hashchange事件
+    const content = document.getElementById('content');
     window.addEventListener('hashchange', (e) => {
       console.log('hashchange')
-      let content = document.getElementById('content');
       content.innerText = location.hash;
+    })
+    
+    content.addEventListener('click', (e) => {
+      window.history.pushState({ key: Date.now().toFixed(3) }, '', '/help')
+      console.log('click')
     })
 </script>
 </body>
