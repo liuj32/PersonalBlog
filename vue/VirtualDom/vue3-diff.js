@@ -42,5 +42,11 @@ function vue3Diff(prevChildren, nextChildren, parent) {
       nextStart = j,
       nextLeft = nextEnd - nextStart + 1,     // 新列表中剩余的节点长度
       source = new Array(nextLeft).fill(-1);  // 创建数组，填满-1    
+
+
+    // [5, 4, 1, 2, 3]
+    // [2, 3， 4]
+
+    // [ 1,-1]
   }
 }
