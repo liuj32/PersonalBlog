@@ -10,21 +10,18 @@
             margin: 0px;
             padding: 0px;
         }
-    div{
-		position: relative;
+    div {
+		display: table-cell;
+        vertical-align: middle;
+        text-align: center;
         width: 100vw;
         height: 100vh;
 	}
-	.inner{
+	.inner {
+		display: inline-block;
         width: 200px;
-        border:1px solid red;        
-        position: absolute;
-		margin: auto;
-        height: 100px;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
+        height: 100px;        
+        border:1px solid red;
 	}
     </style>
 </head>
@@ -36,6 +33,7 @@
     </div>
 </body>
 </html>
+
 <!-- 
-    通过定位
+    方法2:（table-cell）
  -->

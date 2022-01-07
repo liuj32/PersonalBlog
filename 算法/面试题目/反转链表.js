@@ -1,4 +1,3 @@
-<script>
 let c = {
     value: 3,
     next: null
@@ -23,7 +22,6 @@ function Node(val) {
 function reverseNodeList(head) {
     var dummy
     var cur, next, prev
-    cur = head
     prev = null
     dummy = new Node()
     cur = head
@@ -37,37 +35,7 @@ function reverseNodeList(head) {
     return dummy.next
 }
 
+
+
 var head = reverseNodeList(a)
 console.log(head)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</script>

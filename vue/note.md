@@ -22,6 +22,13 @@
 4. mixin 和 mixins 区别
 
 5. computed 和 watch 区别
+  coumputed：实际上是一个惰性求值的观察者computed watcher,
+  当他依赖状态发生改变时，就会通知这个watcher，computed watcher 通过 this.dep.subs.length 判断有没有订阅者,
+  有的话,会重新计算,然后对比新旧值,如果变化了,会重新渲染。 (Vue 想确保不仅仅是计算属性依赖的值发生变化，而是当计算属性最终计算的值发生变化时才会触发渲染 watcher 重新渲染，本质上是一种优化。)
+
+  watch: user watcher
+
+  end：数据可看做watcher
 
 6. keep-alive 组件有什么作⽤
 
@@ -29,7 +36,7 @@
 
 8. 组件中 data 什么时候可以使⽤对象
 
-9. v-for 数组 key设置为数组索引会有问题吗
+9.  v-for 数组 key设置为数组索引会有问题吗
 
 ## Vue 常考进阶知识点
 1. 响应式原理
@@ -49,3 +56,10 @@ setTimeout
 
 ## vuex
 1. 子组件怎么获取到store数据
+
+## vue3
+1. Object.defineproperty -> proxy
+2. virtual Dom重构
+3. Tree-sharking support
+4. Compositon Api
+5. 新增的三个组件Fragment、Teleport、Suspense
