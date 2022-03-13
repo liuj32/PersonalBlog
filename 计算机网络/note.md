@@ -27,6 +27,16 @@
 QUIC协议：基于udp，多路复用、0-RTT、纠错机制
 
 10. HTTPS 什么情况下是不可靠的？中间人攻击？
+    
+11. cookie各字段
+  name
+  value
+  domain: 当前域名、或者父域名(二级域名)有效，其他域无效
+  path
+  size
+  http
+  expire/Max-Age
+  secure
 
 ## tcp
 
@@ -37,6 +47,7 @@ QUIC协议：基于udp，多路复用、0-RTT、纠错机制
 
 3. tcp流量控制、拥塞控制<br>
 参考：https://zhuanlan.zhihu.com/p/37379780
+拥塞控制：慢开始(拥塞窗口、慢开始门限)、拥塞避免，快重传、快恢复
 
 4. 滑动窗口<br>
 

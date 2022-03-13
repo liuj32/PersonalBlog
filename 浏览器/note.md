@@ -21,3 +21,22 @@
 * 浏览器渲染
 
 ## 重绘(repaint)、重排(回流reflow)
+
+## 浏览器高度计算
+地址：https://segmentfault.com/a/1190000016554851
+1. height：
+2. clientHeight：自身高度 + padding - 滚动条高度(17px)
+3. offsetHeight：自身高度 + padding + border
+4. scrollHeight：自身padding + 内容区高度
+
+offsetHeight与clientHeight：多加上滚动条高度 + border
+
+网页文档：
+  宽：document.body.scrollWidth
+  高：document.body.scrollHeight
+浏览器窗口：
+  宽：window.innerWidth
+  高：window.innerHeight （不包含菜单栏）
+
+## 多个标签页之间通信的几种方法
+地址：https://juejin.cn/post/6844903589924569101

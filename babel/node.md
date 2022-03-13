@@ -1,5 +1,7 @@
 # babel
 
+## babel原理
+
 ## babel插件编译过程
 1. 加载配置文件
    尝试加载babel.config.js
