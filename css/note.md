@@ -40,3 +40,23 @@ absolute：离自己最近的不是static的父元素进行定位，因为元素
 * 保持图像比列，适应屏幕：contain
 * 不保持图像比列，拉伸全屏：fill
 
+## 动画
+一. animation
+name
+duration
+timing-function
+delay
+iteration-count
+direaction： 
+fill-mode：forwards 动画结束后的状态
+play-state: running/pause 进行/暂停
+二. transition
+property
+duration
+timing-function
+delay
+三. transform: 将元素旋转，缩放，移动，倾斜
+translate 移动
+scale 缩放
+rotate 旋转
+skew 倾斜转换

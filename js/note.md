@@ -41,3 +41,13 @@
 
 5. 为什么闭包不会被垃圾回收清除
 参考: https://github.com/raxxarr/note/issues/3
+
+## 深拷贝
+1. 忽略undifined、symbol
+2. 不能序列化函数
+3. 日期对象变为字符串
+4. 正则对象对位空对象
+5. NaN、Infinity，会变为null
+6. 无法拷贝对象原型链
+7. 无法拷贝不可枚举属性
+8. 不能解决循环应用

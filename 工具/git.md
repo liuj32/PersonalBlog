@@ -90,7 +90,7 @@ git 切换分支
 * 可视化工具 ：SourceTree
 * vscode插件：GitLens
 
-# 10、发版分支(release-20200805)合master
+# 11、发版分支(release-20200805)合master
 1. 将release发版分支中commit message合并为一条信息
 2. 切换到master分支，`git rebase release-20200805`
 3. git push
@@ -98,3 +98,34 @@ git 切换分支
 5. git push --tags
 6. 删除远程release分支：git push -delete origin release-20200805
 7. 查看远程分支：git branch -r 
+
+## 12 npm发包
+* npm config set registry http://cnpm-registry.sui.work 设置源地址
+1. npm init
+2. package 包含一些描述字段信息
+name
+version
+description
+author
+license
+repository
+main
+3. npm adduser 第一次发包添加用户信息
+4. npm login // 非第一次发包
+5. npm publish
+   发布 beta 版只需要运行以下命令： npm publish --tag beta // 带--tag参数
+   npm info [package] / npm dist-tag ls [package] // 查看包信息
+   npm dist-tag add [package] latest // 切回之前的版本或者指定的版本, 用户默认安装的版本就是latest
+版本格式：主版本号（marjor）.次版本号（minor）.修订号（patch），版本号递增规则如下：
+
+marjor：当你做了不兼容的 API 修改，
+minor：当你做了向下兼容的功能性新增，
+patch：当你做了向下兼容的问题修正。
+
+package.json的 dependencies 中^符号和~符的区别：
+波浪符号（~）: 它会更新到当前minor version（也就是中间的那位数字）中最新的版本。body-parser:~1.15.2，这个库会去匹配更新到1.15.x的最新版本，如果出了一个新的版本为1.16.0，则不会自动升级。
+插入符号（^）：它将会把当前库的版本更新到当前major version（也就是第一位数字）中最新的版本。放到我们的例子中就是：bluebird:^3.3.4，这个库会去匹配3.x.x中最新的版本，但是他不会自动更新到4.0.0。
+
+注意： 运行 cnpm install xxx 默认的是插入符号（^）
+
+## 
