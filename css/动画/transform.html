@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #div1 {
+      position: relative;
+      height: 200px;
+      width: 200px;
+      margin: 100px;
+      border: 1px solid black;
+    }
+
+    #div2 {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border: 1px solid black;
+      background-color: yellow;
+      /* transform: rotate(10deg); */
+      /* transform: scale(1); */
+      /* transform: translateY(100%); */
+      transform: skew(0deg, 10deg);
+      transform-origin: left top;
+    }
+  </style>
+</head>
+<body>
+  <div id="div1">
+    <div id="div2">HELLO</div>
+  </div>
+</body>
+</html>

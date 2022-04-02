@@ -1,7 +1,7 @@
 @[TOC](git记录)
 # 1、配置代理
 git设置代理: 
-   * git config --global http.proxy 'socks5://127.0.0.1:10805'
+   * git config --global http.proxy 'socks5://127.0.0.1:10808'
    
 git取消代理
    * git config --global --unset http.proxy 

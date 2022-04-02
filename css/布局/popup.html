@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .pupup {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      min-height: 300px;
+      box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+      transform-origin: center bottom;
+      transition-duration: 300ms;
+    }
+    .content {
+    }
+    .down {
+      transform: scaleY(0);
+    }
+    .up {
+      transform: scaleY(1);
+    }
+  </style>
+</head>
+<body>
+  <button>弹框</button>
+
+  <div class="pupup up down">
+    <div class="content"></div>
+  </div>
+</body>
+</html>

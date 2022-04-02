@@ -59,4 +59,7 @@ delay
 translate 移动
 scale 缩放
 rotate 旋转
-skew 倾斜转换
+skew(0deg, 0deg) 倾斜转换，X，Y轴拉伸
+
+transform-origin: xx, 只针对rotate|scale|skew有效？
+rotate|scale|skew 默认转换点(不动的支点)为：center center

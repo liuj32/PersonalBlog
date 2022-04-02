@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8"> 
-<title>菜鸟教程(runoob.com)</title> 
-<style> 
-div
-{
-	width:100px;
-	height:100px;
-	background:red;
-	position:relative;
-	animation:mymove 2s both;
-}
-
-@keyframes mymove
-{
-	from {left:0px;}
-	to {left:200px;}
-}
-</style>
-
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
 </head>
 <body>
+	<div class="parent" id="parent">
+		asdf
+		<div class="previous">previous</div>
+		<div class="child">chid content</div>
+		<div class="next">next</div>
+		asdf
+	</div>
 
-  <div></div>
+	<script>
+let url = 'https://lctsres6.ssjlicai.com/act/pdt-2021-questionnaire/index.html#/?questId=44&a=23';
+let searchParams = new URLSearchParams(url);
+console.log(searchParams.get('questId'))
+
+// ["wd", "蔡徐坤"]
+// ["skill", "篮球"]
+// ["year", "2019"]
 
 
+	</script>
 </body>
 </html>
