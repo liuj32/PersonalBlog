@@ -1,22 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-</head>
-<body>
-	<div class="parent" id="parent">
-		asdf
-		<div class="previous">previous</div>
-		<div class="child">chid content</div>
-		<div class="next">next</div>
-		asdf
-	</div>
+<script>
 
-	<script>
-		
-	</script>
-</body>
-</html>
+var obj = {
+  name: 'jk'
+}
+
+
+ function myNew(func, ...args) {
+   if (typeof func !== 'function') {
+     throw new Error('')
+   }
+   const proto = Object.create(func.prototype)
+   const result = func.apply(obj, args)
+    return {
+    }
+    // return result instanceof Object ? result : proto
+ }
+
+  // function func() {
+  //   console.log(this)
+  // }
+function fundc() {
+  console.log(this)
+}
+
+// myNew(func)
+// var a = new func()
+console.log(Object.create(fundc.prototype))
+
+
+</script>

@@ -1,4 +1,57 @@
+// 简单版
+function myPromise(executor) {
+  const self = this
+  self.status = 'pending'
+  self.value = ''
+  self.reason = ''
+  function resolve(value){
+    if (self.status === 'pending') {
+      self.value = value
+      this.status = 'resolved'
+    }
+  }
+  function reject(reason){
+    if (self.status === 'pending') {
+      self.reason = reason
+      this.status = 'rejected'
+    }
+  }
 
+  try {
+    executor(resolve, reject)
+  } catch (err) {
+    reject(err)
+  }
+}
+
+myPromise.prototype.then = function(onFullfilled, onRejected) {
+  const self = this
+  if (this.status === 'resolved') {
+    return new Promise((resolve, reject) => {
+      const x = onFullfilled(self.value)
+      if (x instanceof myPromise) {
+        x.then(resolve)
+      } else {
+        resolve(x)
+      }
+    })
+  }
+  if (this.status === 'rejected') {
+    return new Promise((resolve, reject) => {
+      const x = onRejected(self.value)
+      if (x instanceof myPromise) {
+        x.then(resolve)
+      } else {
+        resolve(x)
+      }
+    })
+  }
+}
+
+
+
+
+// 复杂版
 const PENDING = 1;
 const FULFILLED = 2;
 const REJECTED = 3;
@@ -6,7 +59,7 @@ const REJECTED = 3;
 function MyPromise(executor) {
     let self = this;
     this.resolveQueue = [];
-    this.rejectQueue = [];  
+    this.rejectQueue = [];
     this.state = PENDING;
     this.val = undefined;
     function resolve(val) {
@@ -73,7 +126,7 @@ MyPromise.prototype.then = function(onResolve, onReject) {
             });
         });
     }
-    
+
     if (self.state === PENDING) {
         return new MyPromise(function(resolve, reject) {
             self.resolveQueue.push((val) => {

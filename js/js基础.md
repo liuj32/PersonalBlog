@@ -88,3 +88,16 @@ Dom更改：
   innerText：内部文本
   outerText：内部文本
   innerText和outerText区别：获取相同，但在设置时，innerText仅设置标签所包含的文本，而outerText设置包含包括标签自身在内的文本
+## defer与async区别
+1. 都是异步
+2. async 加载完成后就执行，执行过程中阻塞后面元素解析；乱序执行，加载完成后就执行。
+   defer 加载脚本和解析后面文档并行进行，脚本的执行在所有元素解析完成后；脚本顺序执行。
+参考：https://segmentfault.com/q/1010000000640869
+
+## this
+箭头函数中没有this, arguments, super，这些只依赖包含箭头函数的第一个普通函数
+常见三种方式：
+1. 在浏览器中，在全局范围内this指向window
+2. 在函数中，this永远指向最后调用它的那个对象
+3. 构造函数中，this指向new出来的那个新的对象。(手写new看具体过程)
+4. call、apply、bind中的this指向绑定的那个对象上

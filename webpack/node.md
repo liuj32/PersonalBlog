@@ -22,13 +22,25 @@ non-initial(可以延迟加载的块)， 可能出现在动态导入或者SplitC
 模块文件 -> loader -> acore -> AST，通过分析语法树就可以分析这个模块是否还有依赖的模块。进而继续执行循环执行下一个模块的编译解析。
 
 ##  性能优化
-  编译性能优化:
-  优化webpack打包速度:
-  优化打包体积:
+* 缩小编译范围：
+  includes/exlude：指定搜索范围/排除不必要的搜索范围
+  alias：缓存目录，避免重复寻址
+* babel-loader: 
+  忽略node-modules,避免重复编译第三方库中已经编译过得代码
+  使用cacheDireactory缓存编译结果,避免重复编译
+* 多进程并发
+  happyPack多进程并发文件的loader解析
+* 提取第三方库或通过引用外部文件的方式引入第三方库
+  DLLPlugin/DLLReferencePlugin:提前进行打包缓存，避免重复编译
+  externals：使用已传入CDN的依赖包，需要指定模块加载方式，引用子模块会打包进项目中(dllplugin不会)
+* source-map
+  生产环境关闭soruce-map
+* 其他
+  代码压缩插件uglifyJsPlugin
+  按需加载资源文件require.ensure
+  开启scope hosting(体积更小、函数作用域更小、代码可读性更好)
 
-  webpack内置优化：
-  1. tree-shaking
-  2. scope-hosting
+
    
 ## Webpack Proxy工作原理
   接受客户端发送的请求转发给其他服务器，解决浏览器的跨域问题（浏览器安全策略限制）。
