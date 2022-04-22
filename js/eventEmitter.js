@@ -1,8 +1,15 @@
+//  发布/订阅模式
+*订阅者
+*发布者
+*信号中心
+描述：存在一个信号中心，某个任务完成时，就像信号中心发布一个信号，其他任务可以向信号中心订阅这个信号，从而可以知道自己什么时候可以执行。
+
 class EventEmitter {
     constructor() {
-        this.subs = {}
+        this.subs = {} // 信号中心
     }
 
+    // 订阅
     on(event, cb) {
         (this.subs[event] || this.subs[event] = []).push(cb)
     }

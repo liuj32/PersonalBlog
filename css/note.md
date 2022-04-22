@@ -6,6 +6,16 @@ https://mp.weixin.qq.com/s/4euD4SiogTTxHVjKR6tNcw
 ## css中的子元素中的百分比（%）到底是谁的百分比
 https://www.cnblogs.com/sundance123/p/13893002.html
 
+## 块级元素与行内元素区别
+块级元素：
+
+行内元素：
+  不换行
+  宽高不生效
+  padding-top、padding-bottom, margin-margin-bottom 不生效
+  行内子元素行高比父级小，则父元素行高有效
+  
+
 ## 三角形、圆
 https://www.jb51.net/article/42513.htm
 
