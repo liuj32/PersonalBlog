@@ -14,7 +14,10 @@ git 新建并切换分支
     
 git 切换分支 
  * git checkout   '分支名'
- 
+
+git项目设置仓库地址
+git remote add origin url
+
 推送新建分支到远程
  * git push --set-upstream origin [branch]
 #  3、重命名 commit message、 合并commit
@@ -47,9 +50,13 @@ git 切换分支
    * git reset --hard head~
 
 其他命令：
-git reset --soft commitId 回退某次提交代码到暂存区
-git reset --mixed commitId 回退某次提交代码到工作区
-git reset --hard commitId 回退某次提交代码
+git reset --soft commitId 回退某次提交代码到`暂存区`
+git reset --mixed commitId 回退某次提交代码到`工作区`
+git reset --hard commitId 回退某次`提交代码`
+-----------------------------------------------------
+git reset --soft head~ 回退`上次`提交代码到`暂存区`
+git reset --mixed head~ 回退`上次`提交代码到`工作区`
+git reset --hard head~ 回退`上次``提交代码`
 # 5、git reflog 时光穿梭机
 1、git reflog   //  查看最近操作记录
 2、git reset --hard [commit id]  // 回到误操作的commit记录
