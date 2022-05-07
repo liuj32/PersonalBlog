@@ -31,12 +31,12 @@ QUIC协议：基于udp，多路复用、0-RTT、纠错机制
 11. cookie各字段
   name
   value
-  domain: 当前域名、或者父域名(二级域名)有效，其他域无效
-  path
-  size
-  http
+  domain: // 可以访问该cookie的域名，如果设置为“.google.com”，则所有以“google.com”结尾的域名都可以访问该Cookie。注意第一个字符必须为“.”。
+  path // 可以访问cookie的页面路径
+  size // cookie大小
+  httponly // 不能通过document.cookie获取
   expire/Max-Age
-  secure
+  secure // 是否只能通过https传递此cookie
 
 ## tcp
 

@@ -5,15 +5,46 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		html, body {
+			height: 100%;
+		}
+		.box {
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+		}
+		.child {
+			width: 100px;
+			border: 1px solid red;
+		}
+		.child + .child {
+			margin-top: 5px;
+		}
+		.child1 {
+			flex-grow: 1;
+		}
+		.child2 {
+			flex-grow: 1;
+		}
+		.child3 {
+			flex: 0 1 auto;
+			height: 500px;
+		}
+	</style>
 </head>
 <body>
-
-
+	<div class="box">
+		<div class="child child1"></div>
+		<div class="child child2"></div>
+		<div class="child child3"></div>
+	</div>
 <script>
 
-Promise.all([]).then((result) => {
-	console.log(234234)
-})
 </script>
 </body>
 </html>

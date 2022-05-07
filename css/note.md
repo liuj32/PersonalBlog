@@ -36,9 +36,10 @@ https://www.jb51.net/article/42513.htm
 6. align-content
 -----------------
 7. order
-8. flex-grow
-9. flex-shrink
-10. flex-basis
+8. flex-grow 放大比例，1-等比占据剩余空间
+9. flex-shrink 缩小比列，1-等比缩小
+10. flex-basis 占据的主轴空间，（若主轴为水平，相当于设置项目的宽度，原width将会失效，flex-basis/width可与flex-grow叠加宽度）
+    width: 500px; flex: 0 1 auto; 容器宽度大于500px，元素的宽度就为500px, 不参与分配剩余空间, 否则元素缩放。
 11. flex
 12. align-self
 

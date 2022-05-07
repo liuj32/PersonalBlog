@@ -110,3 +110,10 @@ git reset --hard head~ 回退`上次``提交代码`
 5. git push --tags
 6. 删除远程release分支：git push -delete origin release-20200805
 7. 查看远程分支：git branch -r 
+
+
+# merge与rebase
+merge：合并按时间合并
+rebase: 不同分支的不同的log与log之间进行对比合并。
+
+

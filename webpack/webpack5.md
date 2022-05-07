@@ -50,4 +50,41 @@
 * 避免在生产环境下才会用到的工具，比如TerserPlugin来minify(压缩)和mangle(混淆破坏)代码是没有意义的。
 * 最小化 entry chunk
 
-11. 
+
+## 自定义loader
+loader是导出一个函数的node模块，该函数在loader转换资源的时候会被调用。在函数内部可以访问Loader API，也可以通过this上下文访问。
+编写loader准则：
+* 简单：应该只做单一任务。
+* 链式：利用loader可以链式调用的优势...
+* 模块化：保证输出模块化。
+* 无状态：确保loader在不同模块转换之间不保存状态。
+* loader 工具库：充分利用 loader-utils 包，他提供很多工具。
+* loader 依赖：如果依赖外部资源必须声明它，用于使缓存失效。
+* module 依赖
+* 通用代码
+* 不要使用绝对路径
+* 同等依赖(peer dependencies)
+
+## 自定义plugin
+在构建流程中引入自定义的行为。
+创建plugin有以下步骤:
+1. 一个JavaScript命名函数或JavaScript类
+2. 插件函数的prototype上定义一个apply方法
+3. 指定一个绑定到webpack自身的事件钩子
+4. 处理webpack内部实例的特定数据
+5. 功能完成后调用webpack提供的回调（不一定有这一步）
+-----------
+开发plugin需要深入理解 webpack compiler 和每个独立的 compilation。
+compiler:
+Compiler  继承自 Tapable，用来注册和调用插件，大多数面向用户的插件会首先在Compiler上注册。
+这个过程通常包含compilation创建之前、之后的一些钩子
+
+compilation:
+Compilation 模块会被 Compiler 用来创建新的 compilation 对象
+compilation实例能访问所有的模块和他们的依赖，在编译阶段，模块有以下过程：
+1. 加载(load)
+2. 封存(seal)
+3. 优化(optimize)
+4. 分块(chunk)
+5. 哈希(hash)
+6. 重新创建(restore)
