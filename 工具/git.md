@@ -20,6 +20,8 @@ git remote add origin url
 
 推送新建分支到远程
  * git push --set-upstream origin [branch]
+同步远程分支
+ * git remote prune origin
 #  3、重命名 commit message、 合并commit
 1、重命名最近一次的commit message。
 * git commit  --amend 进入编辑页面。

@@ -77,6 +77,7 @@ QUIC协议：基于udp，多路复用、0-RTT、纠错机制
 4. OSI 网络七层模型，各层作用
 
 5. JWT
+参考：https://jelly.jd.com/article/6243bef5e8054001c65f4511
 ## 推荐书籍
 1. 《《深入理解计算机网络》》
 

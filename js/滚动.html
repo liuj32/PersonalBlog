@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.parent {
+      height: 800px;
+      width: 100%;
+      border: 1px solid red;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+		}
+		.child {
+			margin-bottom: 20px;
+			width: 100px;
+			height: 300px;
+			border: 1px solid red;
+      scroll-behavior: smooth;
+		}
+	</style>
+</head>
+<body>
+  <button id="btn">点击</button>
+	<div class="parent">
+		<div class="child child1">1</div>
+		<div class="child child2">2</div>
+		<div class="child child3">3</div>
+		<div class="child child4">4</div>
+		<div class="child child5">5</div>
+		<div class="child child6">6</div>
+	</div>
+
+<script>
+  /**
+   *scrollTo：滚动到目标位置
+    scrollBy：相对当前位置滚动
+    scrollIntoView：让元素滚动到视野内
+    scrollIntoViewIfNeeded：让元素滚动到视野内（如果不在视野内）
+   **/
+
+  let btn=document.getElementById('btn');
+  const parentele = document.querySelector('.parent')
+  const ele = document.querySelectorAll('.child')
+
+  btn.onclick = function() {
+    parentele.scrollTo(0, ele[2].offsetTop - 40);
+    // ele[2].scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest'})
+    // ele[2].scrollIntoViewIfNeeded()
+  }
+
+
+  // let btn=document.getElementById('btn');
+  // let target=document.getElementById('target');
+
+  // function animateScroll(element,speed) {
+  //   let rect=element.getBoundingClientRect();
+  //   //获取元素相对窗口的top值，此处应加上窗口本身的偏移
+  //   let top=window.pageYOffset+rect.top;
+  //   let currentTop=0;
+  //   let requestId;
+  //   //采用requestAnimationFrame，平滑动画
+  //   function step(timestamp) {
+  //     currentTop+=speed;
+  //     if(currentTop<=top){
+  //       window.scrollTo(0,currentTop);
+  //       requestId=window.requestAnimationFrame(step);
+  //     }else{
+  //       window.cancelAnimationFrame(requestId);
+  //     }
+  //   }
+  //   window.requestAnimationFrame(step);
+  // }
+
+  // btn.onclick=function (e) {
+  //   animateScroll(target,50);
+  
+  // };
+</script>
+</body>
+</html>

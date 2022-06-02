@@ -101,3 +101,7 @@ Dom更改：
 2. 在函数中，this永远指向最后调用它的那个对象
 3. 构造函数中，this指向new出来的那个新的对象。(手写new看具体过程)
 4. call、apply、bind中的this指向绑定的那个对象上
+
+## target、currentTarget
+currentTarget：绑定事件的对象
+target：触发事件的对象
