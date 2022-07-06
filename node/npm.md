@@ -14,11 +14,15 @@ main
 3. npm adduser 第一次发包添加用户信息
 4. npm login // 非第一次发包
 5. npm publish
-   发布 beta 版只需要运行以下命令： npm publish --tag beta // 带--tag参数
-   npm info [package] / npm dist-tag ls [package] // 查看包信息
-   npm dist-tag add [package] latest // 切回之前的版本或者指定的版本, 用户默认安装的版本就是latest
-版本格式：主版本号（marjor）.次版本号（minor）.修订号（patch），版本号递增规则如下：
+   发布 beta 版只需要运行以下命令： npm publish --tag=beta // 带--tag参数
 
+   npm info [package] / npm dist-tag ls [package] // 查看包信息
+   npm dist-tag add [package] latest // 为指定的版本加上tag, 用户默认安装的版本就是latest
+   latest：稳定版
+   legacy：
+   next：最新版
+   npm install xxxx --legacy-peer-deps 忽略
+版本格式：主版本号（marjor）.次版本号（minor）.修订号（patch），版本号递增规则如下：
 marjor：当你做了不兼容的 API 修改，
 minor：当你做了向下兼容的功能性新增，
 patch：当你做了向下兼容的问题修正。

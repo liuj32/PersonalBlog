@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="dom">一段文字内容<span style="position:absolute;">...</span></p>
+  <h1 color=red>设置或获取位于对象起始和结束标签内的</h1>
+  <ul>
+    <li  onclick="innerHTMLDemo()">innerHTML效果.</li>
+    <div id="test_id1"></div>
+    <li  onclick="innerTextDemo()">innerText效果.</li>   
+    <div id="test_id2"></div>
+    <li  onclick="outerHTMLDemo()">outerHTML效果.</li>   
+    <div id="test_id3"></div>
+    <li onclick="outerTextDemo()">outerText效果.</li>   
+    <div id="test_id4"></div>
+  </ul>
+</body>
+<script>   
+ const ele = document.querySelector('h1')
+  //.innerHTML  
+  function innerHTMLDemo()  {
+    test_id1.innerHTML="<i><u>设置或获取位于对象起始和结束标签内的 HTML.</u></i>";
+  }
+  //.innerText  
+  function innerTextDemo()
+  {   
+    test_id2.innerText="<i><u>设置或获取位于对象起始和结束标签内的文本.</u></i>";   
+  }   
+  //.outerHTML  
+  function outerHTMLDemo()  {
+    test_id3.outerHTML="<font size=9pt color=red><i><u>设置或获取对象及其内容的 HTML 形式.</u></i></font>";   
+  }  
+  //.outerText  
+  function outerTextDemo()  {
+    test_id4.outerText="<i><u>设置(包括标签)或获取(不包括标签)对象的文本.</u></i>";
+  }
+  </script>  
+</html>
