@@ -2,15 +2,16 @@
 class Watch {
   obj;
   key;
+  cb;
   value;
 
   constructor(obj, key, cb) {
     // 将Dep.target指向自己
-    // 然后出发属性的getter 添加监听
+    // 然后触发属性的getter 添加监听
     // 最后将Dep.target置为空
     Dep.target = this
+    this.obj = obj
     this.cb = cb
-    this.obj = obj 
     this.key = key
     this.value = obj[key]
     Dep.target = null
@@ -53,7 +54,7 @@ class Dep {
   }
 }
 
-function Observe(obj) {
+function observe(obj) {
   if (!obj || typeof obj !== 'object') {
     return
   }
@@ -84,12 +85,12 @@ function update(value) {
   document.querySelector('div').innerText = value
 }
 
-var data = { name: 'yck' }
+var data = { name: 'aaa' }
 observe(data)
 // 模拟解析到 `{{name}}` 触发的操作
 new Watcher(data, 'name', update)
 // update Dom innerText
-data.name = 'yyy'
+data.name = 'bbb'
 
 
 // Object.defineProperty(obj, 'key', {
