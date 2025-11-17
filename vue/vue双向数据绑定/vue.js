@@ -87,7 +87,9 @@ function update(value) {
 
 var data = { name: 'aaa' }
 observe(data)
-// 模拟解析到 `{{name}}` 触发的操作
+// 模拟解析到 `{{name}}` 触发的操作：
+// 1. 收集渲染watcher到数据属性对应的dep， 访问name数据属性，dep.depend() -> Dep.target.addDep(this) -> dep.addSub(this)
+// 2. 触发订阅者的update()
 new Watcher(data, 'name', update)
 // update Dom innerText
 data.name = 'bbb'

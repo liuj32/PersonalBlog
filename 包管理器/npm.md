@@ -45,3 +45,6 @@ npm install --save-dev packageName 用于开发环境(比如：linter，测试�
 git commit校验
    husky：使操作git hooks变得容易。
    gitHooks 配合lint-staged 工具。
+
+## dependencies 与 devDependencies 区别
+开发npm包时，用devDependencies方法安装的npm包，在其他地方用你开发的这个npm包在安装时不会安装devDependencies描述下的包。

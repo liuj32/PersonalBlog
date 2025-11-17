@@ -1,0 +1,24 @@
+<script>
+  /**
+   * 微任务
+   * MutationObserver 监听dom变化
+   */
+
+  function flushCallbacks() {
+    console.log('update')
+  }
+
+  let timerFunc
+  let counter = 1
+  const observer = new MutationObserver(flushCallbacks)
+  const textNode = document.createTextNode(String(counter))
+  observer.observe(textNode, {
+    characterData: true
+  })
+  timerFunc = () => {
+    counter = (counter + 1) % 2
+    textNode.data = String(counter)
+  }
+
+  timerFunc()
+</script>

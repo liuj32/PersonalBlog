@@ -47,3 +47,18 @@ id("lucifer"); // 基于类型推导，我们可以这样简写
    
 * 交叉类型
 type C = A & B
+
+## 关键词：
+unknown：
+  any存在的问题：1、失去了类型检查的作用，在可能出错的地方也不会发现错误。
+                2、造成类型污染问题，any类型的对象会导致后续的属性也变为any。
+  unknown：1、任何类型的值都可以赋值给unknow，但是unknow类型的值只能赋值给unknow本身和any类型。
+           2、如果要把 unknown 类型值赋给 unknown 或者 any 之外的其它类型，或者对 unknown 类型执行方法调用或者属性读取之类的操作，都必须先使用条件控制流或者类 型断言来收窄 unknown 到指定的类型。
+  例如：({}) as unknown as Config
+
+declare：
+  在引入第三方库，使用其中的方法时，需要用declare声明定义，避免ts报错。
+  声明全局变量、函数、类、module。
+
+[] as const: readonly []，只读
+
